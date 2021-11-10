@@ -1,0 +1,8 @@
+Precisa seguir exatamente essa ordem
+1 - php artisan key:generate.
+2 - php artisan config:clear
+3 - php artisan config:cache
+
+
+
+
