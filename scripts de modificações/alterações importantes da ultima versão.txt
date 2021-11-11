@@ -1,0 +1,39 @@
+ALTER TABLE pessoas
+  DROP COLUMN cpf,
+  DROP COLUMN rg,
+  DROP COLUMN logradouro,
+  DROP COLUMN numero,
+  DROP COLUMN complemento,
+  DROP COLUMN bairro,
+  DROP COLUMN cep,
+  DROP COLUMN contato;
+
+CREATE TABLE IF NOT EXISTS documentos_pessoas(
+	id int AUTO_INCREMENT,
+    numero varchar(30) NOT null,
+    pessoa_id int NOT null,
+    tipo_documento_id int NOT null,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS documentos_tipos(
+	id int AUTO_INCREMENT,
+    descricao varchar(30) NOT null,
+    PRIMARY KEY (id)
+    
+);
+
+ALTER TABLE `eventos` ADD `logo_id` VARCHAR(50) NULL AFTER `num_trab_avaliador`;
+
+ALTER TABLE `autores` ADD `ordemDeAutoria` int NULL AFTER `pessoa_id`;
+
+
+
+INSERT INTO `documentos_tipos` (`id`, `descricao`) VALUES
+(1, 'CPF'),
+(2, 'Passaporte');
+
+ALTER TABLE `pessoas` ADD `sobrenome` VARCHAR(100) NOT NULL AFTER `nome`;
+
+
+UPDATE `trabalhos_status` SET `descricao` = 'Aguardando correção do autor' WHERE `trabalhos_status`.`id` = 6;

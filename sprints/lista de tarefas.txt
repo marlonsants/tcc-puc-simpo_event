@@ -1,0 +1,64 @@
+site:
+
+Cardoso: no cadastro de pessoas retirar os require do laravel e colocar no html pois fica mais bonito e mais simples de fazer nos proximos forms 
+
+Cardoso: colocar mascaras nos campos que precisam de mascara no cadastro de pessoas
+
+
+Cardoso: incluir select de cadastro de tipo de usuario  avaliador ou autor e criar form de area responsável ao escolher o tipo avaliador
+
+criar email de verificação após realizar o cadastro do usuario, só liberar o cadastro após a verificação ser feita pra evitar que robos acessem o sistema e garantir que o email é valido
+
+implementar a pagina de redefinição de senha
+
+
+Autores:
+Listar trabalhos #feito
+cadastrar trabalhos #feito
+fazer upload do pdf #feito
+criar a tabela de uploads e fazer a inserção dos dados de upload  nela #feito
+verificar status do trabalho #feito
+
+
+Cardoso: fazer o manual de submissão 
+
+
+Marlon: implementar o botão de correção do trabalho
+
+Cardoso: criar a pagina de confecção do comprovante 
+
+Marlon: implementar o botão baixar comprovante
+
+Marlon: criar a pagina de vizualização do artigo #Feito
+
+Marlon: implementar o botão visualizar artigo #feito
+
+
+Avaliadores:
+
+Marlon: criar função de dsitribuição automática de trabalhos  #feito
+
+Marlon: fazer o select dos trabalhos cadastrados pra listar #feito
+
+Marlon: implementar o botão visualizar artigo #feito
+
+ 
+Anderson Guilherme -> 
+
+Souza: incluir um botão avaliar trabalho
+Souza: criar a tela de avaliação invidual de trabalho
+Souza: criar o form de avaliação de trabalho
+Souza: implementar o botão requisitar correção
+Souza: retirar o manual do link termos e colocar em um link ajuda -> FEITO
+Souza: Fazer a Pagina de edição do perfil do usuario -> FEITO
+Souza: verificar se o cpf cadastrado ja exite no sistema com ajax pra evitar duplicidade -> FEITO
+Souza: verificar se o Email cadastrado ja exite no sistema com ajax pra evitar duplicidade -> FEITO
+Souza: Cadastrar nivel de acessos -> FEITO
+
+
+
+
+
+
+
+

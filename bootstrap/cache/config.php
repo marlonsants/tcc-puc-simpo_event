@@ -172,7 +172,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\xampp\\htdocs\\SimpoEvent\\storage\\framework/cache',
+        'path' => 'C:\\xampp\\htdocs\\tcc-puc-simpo_event\\storage\\framework/cache',
       ),
       'memcached' => 
       array (
@@ -482,12 +482,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\SimpoEvent\\storage\\app',
+        'root' => 'C:\\xampp\\htdocs\\tcc-puc-simpo_event\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\SimpoEvent\\storage\\app/public',
+        'root' => 'C:\\xampp\\htdocs\\tcc-puc-simpo_event\\storage\\app/public',
         'visibility' => 'public',
       ),
       's3' => 
@@ -591,7 +591,7 @@
     'lifetime' => 120,
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\xampp\\htdocs\\SimpoEvent\\storage\\framework/sessions',
+    'files' => 'C:\\xampp\\htdocs\\tcc-puc-simpo_event\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -610,9 +610,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\SimpoEvent\\resources\\views',
+      0 => 'C:\\xampp\\htdocs\\tcc-puc-simpo_event\\resources\\views',
     ),
-    'compiled' => 'C:\\xampp\\htdocs\\SimpoEvent\\storage\\framework\\views',
+    'compiled' => 'C:\\xampp\\htdocs\\tcc-puc-simpo_event\\storage\\framework\\views',
   ),
   'dompdf' => 
   array (
@@ -620,10 +620,10 @@
     'orientation' => 'portrait',
     'defines' => 
     array (
-      'font_dir' => 'C:\\xampp\\htdocs\\SimpoEvent\\storage\\fonts/',
-      'font_cache' => 'C:\\xampp\\htdocs\\SimpoEvent\\storage\\fonts/',
+      'font_dir' => 'C:\\xampp\\htdocs\\tcc-puc-simpo_event\\storage\\fonts/',
+      'font_cache' => 'C:\\xampp\\htdocs\\tcc-puc-simpo_event\\storage\\fonts/',
       'temp_dir' => 'C:\\Users\\MARLON~1.SAN\\AppData\\Local\\Temp',
-      'chroot' => 'C:\\xampp\\htdocs\\SimpoEvent',
+      'chroot' => 'C:\\xampp\\htdocs\\tcc-puc-simpo_event',
       'enable_font_subsetting' => false,
       'pdf_backend' => 'CPDF',
       'default_media_type' => 'screen',

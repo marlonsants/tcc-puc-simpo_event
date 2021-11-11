@@ -1,0 +1,15 @@
+
+ALTER TABLE `criterios`
+	ADD COLUMN `created_at` TIMESTAMP NULL AFTER `peso`,
+	ADD COLUMN `updated_at` TIMESTAMP NULL AFTER `created_at`;
+
+
+ALTER TABLE `criterios`
+	ALTER `nome` DROP DEFAULT,
+	ALTER `descricao` DROP DEFAULT,
+	ALTER `peso` DROP DEFAULT;
+
+ALTER TABLE `criterios`
+	CHANGE COLUMN `nome` `nome` VARCHAR(50) NOT NULL AFTER `evento_id`,
+	CHANGE COLUMN `descricao` `descricao` VARCHAR(50) NOT NULL AFTER `nome`,
+	CHANGE COLUMN `peso` `peso` VARCHAR(50) NOT NULL AFTER `descricao`;

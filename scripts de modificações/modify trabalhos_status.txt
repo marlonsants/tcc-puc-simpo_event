@@ -1,0 +1,45 @@
+DROP TABLE trabalhos_status;
+
+CREATE TABLE `trabalhos_status` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(50) NOT NULL,
+  `decoration` varchar(60) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `trabalhos_status`
+--
+
+INSERT INTO `trabalhos_status` (`id`, `descricao`, `decoration`) VALUES
+(1, 'Aprovado', 'text-success'),
+(2, 'Trabalho avaliado', 'text-info'),
+(3, 'Em avaliação', 'text-warning'),
+(4, 'PDF não enviado', 'text-danger'),
+(5, 'Aguardando avaliação', 'text-info'),
+(6, 'Precisa de correção', 'text-danger'),
+(7, 'Correção enviada pelo autor', 'text-success');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `trabalhos_status`
+--
+ALTER TABLE `trabalhos_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `trabalhos_status`
+--
+ALTER TABLE `trabalhos_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+

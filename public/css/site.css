@@ -1,0 +1,25 @@
+
+/*Página Login*/
+.section_login
+{
+    margin: 0;
+    width: 100%;
+}
+
+.box-login
+{
+    margin-top: 100px;
+    background-color: rgba(0,0,0,0.62);
+    padding: 50px;
+    border-radius: 20px;
+    font-family: R oboto;
+    font-weight: 300;
+}
+.box-login h3
+{
+    color: #fff;
+}
+.box-login a
+{
+    color: #fff;
+}

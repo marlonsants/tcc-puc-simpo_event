@@ -1,0 +1,12 @@
+campos que serão retirados do cadastro:
+
+este campos devem ser retirados do banco de dados
+
+RG
+CPF
+logradouro
+número da casa
+complemento 
+bairro
+cep
+contato

@@ -1,0 +1,85 @@
+body{background-color: #fdfdfd;}
+.body-cinza{background-color: #e6e6e6;}
+
+.borda-0px{ border-radius: 0px; }
+.legenda{font-size: 24px; font-weight: bold}
+.btn{ border-radius: 0px; }
+
+.navbar{border-radius: 0}
+.navbar-header button{ color:#fff; }
+.pintar-vermelho{color: #d82f2f}
+.centralizar{text-align: center;}
+.alinhar-esquerda{text-align: left;}
+.alinhar-direita{text-align: right;}
+.centralizar-regras{margin-top:100px;}
+.margin-top-20{margin-top: 20px;}
+.margin-top-10{margin-top: 10px;}
+.margin-top-5{margin-top: 5px;}
+.margin-right-5{margin-right: 5px;}
+.margin-left-5{margin-left: 5px;}
+.sombra{box-shadow: 2px 2px 10px #888}
+.box-login{margin-top: 50px}
+legend{margin:20px;}
+.msg_error{margin-bottom: -80px;}
+/*Inputs*/
+.form-control{margin:5px; border-radius: 0px}
+
+/*Tabelas*/
+.table, th{text-align: center}
+
+
+/*Graficos*/
+.caixa-grafico{height:130px; border-radius: 5px; color:#fff; padding:10px; margin-bottom: 40px}
+.caixa-icone{margin-top: 30px}
+.fundo-verde{background-color: #0da54e}
+.letra-verde{color:#088a40}
+.fundo-azul{background-color: #04bff4}
+.letra-azul{color:#0299d2}
+.fundo-amarelo{background-color: #f2c311}
+.letra-amarelo{color:#cd8500}
+.fundo-vermelho{background-color: #f46a4d}
+.letra-vermelho{color:#c2553d}
+input{background-color: #a2b}
+
+#filtroDeBusca{
+	margin-top: 50px;
+	height: 650px;
+	background-color: rgba(249, 249, 249, 0.91);
+	padding: 15px;
+	font-family: sans-serif;
+	color: rgba(45, 45, 45); 		
+}
+#filtroDeBusca input{
+	margin: 10px;
+	padding: 5px;
+}
+
+.modal-backdrop {z-index: 0;}
+
+/*input[type=checkbox]{
+	transform: scale(1); visibility: hidden; cursor: pointer;
+}
+
+input[type=checkbox]:before{
+	visibility: visible;
+	color: rgba(0,0,0,0); background-color: rgba(0,0,0,0); content: "....";
+	border: solid; border-color: rgb(200,200,200); border-radius: 50px;
+}
+
+input[type=checkbox]:checked:before{
+	border-color: rgb(91,192,222);
+	
+}*/
+
+textarea{border-radius: 0px;}
+
+.modal-header{background-color:#7eccd4; color:#fff; font-weight: bold; text-align: center;}
+.modal-content{ border-radius: 0px; }
+
+thead{
+	background-color: #7eccd4;
+	color: #eee;
+}
+
+.thead-padrao{background-color: inherit; color: inherit;}
+table.dataTable thead th, table.dataTable thead td{border-bottom: none!important}
