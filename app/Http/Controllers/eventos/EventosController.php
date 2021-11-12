@@ -28,11 +28,8 @@ class EventosController extends Controller
 		$logoIdOld = $evento->logo_id; 
 
 		if($fileSource->isValid()){
-			// $destinationPath = public_path().DIRECTORY_SEPARATOR.'images/logoDosEventos';
-			// versão local
-			$destinationPath = $_SERVER['DOCUMENT_ROOT'].'\images\logoDosEventos';
-			// versão servidor 
-			// $destinationPath = $_SERVER['DOCUMENT_ROOT'].'images/logoDosEventos';
+			$destinationPath = env('DESTINATION_PATH_LOGO_EVENTO');
+			
 			// dd($destinationPath);
 			$type = $fileSource->getMimeType();
 			$size = $fileSource->getSize();

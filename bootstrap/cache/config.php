@@ -1,7 +1,7 @@
 <?php return array (
   'app' => 
   array (
-    'name' => '4Events',
+    'name' => 'SimpoEvent',
     'env' => 'local',
     'debug' => true,
     'url' => 'http://localhost',
@@ -43,6 +43,7 @@
       26 => 'App\\Providers\\RouteServiceProvider',
       27 => 'Barryvdh\\DomPDF\\ServiceProvider',
       28 => 'ConsoleTVs\\Charts\\ChartsServiceProvider',
+      29 => 'Laravel\\Socialite\\SocialiteServiceProvider',
     ),
     'aliases' => 
     array (
@@ -80,6 +81,7 @@
       'View' => 'Illuminate\\Support\\Facades\\View',
       'PDF' => 'Barryvdh\\DomPDF\\Facade',
       'Charts' => 'ConsoleTVs\\Charts\\Facades\\Charts',
+      'Socialite' => 'Laravel\\Socialite\\Facades\\Socialite',
     ),
   ),
   'auth' => 
@@ -583,6 +585,12 @@
       'model' => 'App\\User',
       'key' => NULL,
       'secret' => NULL,
+    ),
+    'google' => 
+    array (
+      'client_id' => '998689991370-2rhl1rotnh6dpb7jubcqhhhi7dbh1mda.apps.googleusercontent.com',
+      'client_secret' => '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',
+      'redirect' => 'http://localhost:8000/login/google/callback',
     ),
   ),
   'session' => 

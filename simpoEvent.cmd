@@ -1,3 +1,3 @@
-cd C:\xampp\htdocs\SimpoEvent
+cd C:\xampp\htdocs\tcc-puc-simpo_event
 php artisan serve
 pause;

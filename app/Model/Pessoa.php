@@ -26,7 +26,8 @@ class Pessoa extends Model
 	'status',
 	'pergunta_id',
 	'resposta_seguranca',
-	'grupo_id'
+	'grupo_id',
+	'provider_login_social'
 	];
 
 	public function documento()

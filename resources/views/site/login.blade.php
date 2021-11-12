@@ -18,6 +18,7 @@
 					<center class="legenda">Login</center>
 
 					<?php
+					$mensagem = '';
 					if( isset($msg) && !is_null($msg) ){
 
 						if($msg == '1'){
@@ -34,27 +35,33 @@
 
 						$status = ($msg == '1' || $msg == '3' || $msg == '4' || $msg == '5'  ) ? 'success' : 'warning';
 
-						echo '<div class="alert alert-'.$status.'">';
-						echo '<div><center>'.$mensagem.'</center></div>';
-						echo '</div>';
+						if ($mensagem != null) {
+							echo '<div class="alert alert-'.$status.'">';
+							echo '<div><center>'.$mensagem.'</center></div>';
+							echo '</div>';
+						}
 					}
 
 					?>
 
 					
-
-					<div>	
-						<input type="email" name="email" class="form-control text-center borda-0px" placeholder="E-mail">
-					</div>
-					<div>
-						<input type="password" name="senha" class="form-control text-center borda-0px" placeholder="Senha">	
-					</div>
-					<div>
-						<input type="submit" name="btnlogar" class=" form-control btn btn-primary borda-0px" value="Acessar">
-					</div>
-					<div style="font-weight: bold">
-						<a href="/nova_senha" class="alinhar-esquerda col-md-6">Esqueceu a senha?</a>
-						<a href="/cadastrar" class="alinhar-direita col-md-6">Criar uma nova conta</a>
+					<div class="col-md-12">
+						<div class="row">	
+							<input type="email" name="email" class="form-control text-center borda-0px" placeholder="E-mail">
+						</div>
+						<div class="row">
+							<input type="password" name="senha" class="form-control text-center borda-0px" placeholder="Senha">	
+						</div>
+						<div class="row">
+							<input type="submit" name="btnlogar" class=" form-control btn btn-primary borda-0px" value="Acessar">
+						</div>
+						<div class="row"> 
+						<a href="/social/login" target="_self" name="btnlogarComGoogle" class=" form-control btn btn-link borda-0px">Login com Google</a>
+						</div>
+						<div style="font-weight: bold" class="row">
+							<a href="/nova_senha" class="alinhar-esquerda col-md-6">Esqueceu a senha?</a>
+							<a href="/cadastrar" class="alinhar-direita col-md-6">Criar uma nova conta</a>
+						</div>
 					</div>
 				</form>
 

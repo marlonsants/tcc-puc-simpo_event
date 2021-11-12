@@ -10,6 +10,10 @@ Route::get('/',function(){	return view('/site/login');}); //Página Inicial
 Route::get('/login','usuarios\LoginController@acessalogin'); //Pagina Login
 Route::get('/login/{msg}','usuarios\LoginController@acessalogin'); //Pagina Login
 Route::resource('/login/verificar','usuarios\LoginController@login');  //COntroller Login
+
+Route::get('/social/login', 'usuarios\LoginController@redirectToProvider');
+Route::get('/login/google/callback', 'usuarios\LoginController@handleProviderCallback');
+
 Route::resource('/logout','usuarios\LoginController@logout');  //faz logout
 
 Route::get('/termos', function(){ return view('/site/responsabilidade');}); //rota para o termo de reponsabilidade
