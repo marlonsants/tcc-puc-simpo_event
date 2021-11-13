@@ -19,6 +19,10 @@ $tiposDeDocumentos = Documentos_tipos::GetTipos();
             @endforeach
         </div>
         @endif
+
+        @if(Session::has('msg'))
+            <div class="alert alert-info text-center"><p><b>{{Session::get('msg')}}</b></p></div>
+        @endif
     </div>
 
     <div class="row">

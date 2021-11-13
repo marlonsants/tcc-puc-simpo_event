@@ -80,6 +80,13 @@ class AutorController extends Controller
 		$categoria = $this->categoria->where('evento_id',session('evento_id') )->get();
 		$max_autores = $this->evento->select('max_autores')->where('id',session('evento_id'))->get();
 
+		$pessoa = $this->pessoa->find(session('id'));
+
+		if (!isset($pessoa->sobrenome)) {
+			session()->flash('msg', "Para enviar um trabalho é necessário completar os dados do seu perfil!");
+			return view('.site.cadastrar', compact('pessoa'));
+		}
+		
 		$maxAutores = $max_autores[0]->max_autores;
 		//dd($maxAutores);
 
