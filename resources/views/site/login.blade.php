@@ -58,9 +58,9 @@
 						<div class="row"> 
 						<a href="/social/login" target="_self" name="btnlogarComGoogle" class=" form-control btn btn-link borda-0px">Login com Google</a>
 						</div>
-						<div style="font-weight: bold" class="row">
-							<a href="/nova_senha" class="alinhar-esquerda col-md-6">Esqueceu a senha?</a>
-							<a href="/cadastrar" class="alinhar-direita col-md-6">Criar uma nova conta</a>
+						<div style="font-weight: bold" class="row text-center">
+							<a href="/nova_senha" class="col-md-12 col-xs-12">Esqueceu a senha?</a>
+							<a href="/cadastrar" class="col-md-12 col-xs-12">Criar uma nova conta</a>
 						</div>
 					</div>
 				</form>

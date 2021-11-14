@@ -12,7 +12,7 @@ $maxTrabalhoAvaliador = Evento::maxTrabalhoAvaliador();
 <div class="row">
 	<h4 class="text-center">Atribuir avaliadores</h4><hr>
 </div>
-<div class="col-md-9 col-xs-9 col-lg-9" style="overflow: auto">
+<div class="col-md-9 col-xs-12 col-lg-9" style="overflow: auto">
 	
 	<table class="table table-bordered table-hover table-bordered table-stripped" id="trab_atrib_aval">
 		<thead>
@@ -28,7 +28,7 @@ $maxTrabalhoAvaliador = Evento::maxTrabalhoAvaliador();
 	</table>
 
 </div>
-<div class="col-md-3">
+<div class="col-md-3 col-xs-12">
 <table class="table table-bordered table-hover table-bordered table-stripped" id="Trabalhos_atribuidos">	
 	<thead><th>Nome</th><th>Trabalhos Atribuidos</th></thead>
 	<tbody id="tBodyAtribuicoesDosAvalidores">

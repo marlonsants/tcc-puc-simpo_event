@@ -62,9 +62,9 @@
 	</div>
 	@endforeach
 </div>
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-8 col-md-offset-2 col-xs-12">
 	<div class="row">
-		<div class="col-md-4 col-md-offset-5">
+		<div class="col-md-4 col-md-offset-5 col-xs-12">
 			
 			@if(!isset($parecer->parecer))
 			<div class="row">
@@ -88,15 +88,15 @@
 		</div>
 	</div>
 
-	<div <?= !isset($parecer->parecer) ? 'class="collapse"':'class=""' ?>  id="NewParecer">
+	<div class="col-md-8 col-md-offset-2 col-xs-12" <?= !isset($parecer->parecer) ? 'class="collapse"':'class=""' ?>  id="NewParecer">
 		<center>
-		<form  action="/avaliador/parecer" method="post" accept-charset="utf-8" class="form-group">
-			{{csrf_field()}}		
+			<form  action="/avaliador/parecer" method="post" accept-charset="utf-8" class="form-group">
+				{{csrf_field()}}		
 
-			<input type="hidden" name="trabalho_id" value="{{$trabalho->id}}">
-			<textarea data-placement="right" data-toggle="popover" title="Instruções" data-content="Quando este campo perder o foco o texto será salvo automaticamente, sendo assim para fazer alterações no parecer de avaliação basta digitar e clicar em qualquer parte da tela com o mouse" class="form-control" id="inputParecer" name="parecer" value="{{$parecer->parecer or ''}}" style="height: 250px; width: 400px;">{{$parecer->parecer or ''}}</textarea>	
-		</form>
-		<center>
+				<input type="hidden" name="trabalho_id" value="{{$trabalho->id}}">
+				<textarea data-placement="right" data-toggle="popover" title="Instruções" data-content="Quando este campo perder o foco o texto será salvo automaticamente, sendo assim para fazer alterações no parecer de avaliação basta digitar e clicar em qualquer parte da tela com o mouse" class="form-control" id="inputParecer" name="parecer" value="{{$parecer->parecer or ''}}" style="height: 250px">{{$parecer->parecer or ''}}</textarea>	
+			</form>
+		</center>
 	</div>
 
 </div>

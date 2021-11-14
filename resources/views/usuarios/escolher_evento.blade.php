@@ -27,19 +27,6 @@
 					</div>	
 				@endforeach
 			</div>
-			<!-- <form action="/escolher_evento" method="post" accept-charset="utf-8" class="form-group">
-				{!!csrf_field()!!}
-				<select class="form-control" name="evento_id">	
-					@if(isset($eventos) and count($eventos) > 0)
-					@foreach($eventos as $evento)					
-					<option value="{{$evento->id}}">{{$evento->nome_evento}} - {{$evento->instituicao}}</option>}}
-					@endforeach
-					@else
-					<option value="0">Não existe Eventos Cadastrados</option>	
-					@endif
-				</select>		
-				<input type="submit" name="escolher" value="Escolher Evento" class="btn btn-info form-control">
-			</form> -->
 		</div>
 
 	</div>

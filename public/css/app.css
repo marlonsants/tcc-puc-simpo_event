@@ -56,20 +56,6 @@ input{background-color: #a2b}
 
 .modal-backdrop {z-index: 0;}
 
-/*input[type=checkbox]{
-	transform: scale(1); visibility: hidden; cursor: pointer;
-}
-
-input[type=checkbox]:before{
-	visibility: visible;
-	color: rgba(0,0,0,0); background-color: rgba(0,0,0,0); content: "....";
-	border: solid; border-color: rgb(200,200,200); border-radius: 50px;
-}
-
-input[type=checkbox]:checked:before{
-	border-color: rgb(91,192,222);
-	
-}*/
 
 textarea{border-radius: 0px;}
 
@@ -83,3 +69,86 @@ thead{
 
 .thead-padrao{background-color: inherit; color: inherit;}
 table.dataTable thead th, table.dataTable thead td{border-bottom: none!important}
+
+/* tabelas reponsivas */
+
+@media all and (max-width: 800px) {
+
+    table tbody tr td {
+
+        display: block;
+        text-align: center;
+    }
+
+    table tbody tr td:before {
+
+        content: attr(data-title);
+        position: absolute;
+        left: 15px;
+        display: block;
+        font-weight: 600;
+        font-size: 1em;
+    }
+
+    table {
+
+        border: none;
+    }
+
+    table thead {
+
+        display: none;
+    }
+
+    table tbody tr {
+
+        margin-bottom: 10px;
+        display: block;
+        border: 1px solid #dad6eb;
+    }
+
+	table tbody tr td button {
+
+		background: #4CAF50;
+		border: none;
+		border-radius: 20px;
+		box-shadow: 0 4px 8px rgba(34, 34, 34, 0.2);
+		color: #fff;
+		font-weight: 700;;
+		padding: 10px 0;
+		width: 100%;
+	}
+
+	
+	table tbody tr td a {
+
+		background: #4CAF50;
+		border: none;
+		border-radius: 20px;
+		box-shadow: 0 4px 8px rgba(34, 34, 34, 0.2);
+		color: #fff;
+		font-weight: 700;;
+		padding: 10px 0;
+		width: 100%;
+	}
+
+	table tbody tr .progress-avaliacao-mobile {
+		padding-top: 20px;
+		width: 100% !important;
+	}
+
+    table tbody tr td form button {
+
+		background: #4CAF50;
+		border: none;
+		border-radius: 20px;
+		box-shadow: 0 4px 8px rgba(34, 34, 34, 0.2);
+		color: #fff;
+		font-weight: 700;;
+		padding: 10px 0;
+		width: 100%;
+	}
+
+	
+
+}

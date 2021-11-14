@@ -21,6 +21,7 @@ use App\Model\Evento;
 
 	<div class="container-fluid col-xs-12 col-md-10 col-md-offset-1">
 		@if(isset($trabalho))
+		<h2>Editar trabalho</h2>
 		<form action="{{url('autor/trabalhos/editarTrabalho',$trabalho->id)}}" method="POST" accept-charset="utf-8" class="form-group" 
 		oninput="texto = resumo.value.substr(0, 2500);resumo.value.length <= 2500 ? qr.value = resumo.value.length : qrm.value ='Você chegou ao limite  de '+2500+' caracteres permitido, caso você tenha copiado e colado o texto verifique o texto pois deve estar imcompleto';  resumo.value=texto;  
 		textoT = titulo.value.substr(0, 200);titulo.value.length <= 200 ? qt.value = titulo.value.length : qtm.value = 'Você chegou ao limite  de '+200+' caracteres permitido, caso você tenha copiado e colado o texto verifique o texto pois deve estar imcompleto'; titulo.value=textoT;  
@@ -29,6 +30,7 @@ use App\Model\Evento;
 		textoK = key_word.value.substr(0, 200);key_word.value.length <= 200 ? qk.value = key_word.value.length : qkm.value = 'Você chegou ao limite  de '+200+' caracteres permitido, caso você tenha copiado e colado o texto verifique o texto pois deve estar imcompleto'; key_word.value=textoK; ">	
 		{!!method_field('PUT')!!}	
 		@else
+		<h2>Cadastrar trabalho</h2>
 		<form action="{{url('autor/cadastrar/trabalho')}}" method="POST" accept-charset="utf-8" class="form-group" 
 		oninput="texto = resumo.value.substr(0, 2500);resumo.value.length <= 2500 ? qr.value = resumo.value.length : qrm.value ='Você chegou ao limite  de '+2500+' caracteres permitido, caso você tenha copiado e colado o texto verifique o texto pois deve estar imcompleto';  resumo.value=texto;  
 		textoT = titulo.value.substr(0, 200);titulo.value.length <= 200 ? qt.value = titulo.value.length : qtm.value = 'Você chegou ao limite  de '+200+' caracteres permitido, caso você tenha copiado e colado o texto verifique o texto pois deve estar imcompleto'; titulo.value=textoT;  

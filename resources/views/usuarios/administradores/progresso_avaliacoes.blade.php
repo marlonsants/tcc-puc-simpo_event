@@ -25,7 +25,7 @@
 				<tr>
 
 					<td>{{ $trabalho->titulo }}</td>
-					<td width="150">
+					<td width="150" class="progress-avaliacao-mobile">
 						@if($trabalho->avaliacoes_concluidas > 0 and $trabalho->status_id != 4)
 							<input type="hidden" value="">
 							
