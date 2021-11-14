@@ -92,14 +92,25 @@ class Evento extends Model
 		$data_ini_ava_br = $data_ini_ava_br[2].'/'.$data_ini_ava_br[1].'/'.$data_ini_ava_br[0];
 
 		$avaliador = Avaliadores::where('pessoa_id',$pessoa_id)->where('evento_id',$evento_id)->get();
-				// dd($dataAtual,$data_ini_ava,$data_ini_ava_br,$dataAtual - $data_ini_ava,$avaliador[0]->status,$dataAtualStr);
+		$pessoa = Pessoa::find($pessoa_id);
+				
 		if($dataAtual >= $data_ini_ava && $avaliador[0]->status == 1 ){
-
 			return redirect('/avaliador/trabalhos');
-		}else{
-			session()->flash('mensagem', "O perído de avaliação ainda não foi iniciado ou seu cadastro como avaliador não foi aprovado pelos administradores por esse motivo você só tera acesso ao modulo de autor, as avaliações iniciam dia {$data_ini_ava_br} após essa data  caso seu cadastro seja aprovado pelos administradores do evento você terá acesso ao modulo de avaliação, agradecemos a compreensão");
+		}else if ($dataAtual < $data_ini_ava){
 
+			session()->flash('mensagem', "O perído de avaliação ainda não foi iniciado por esse motivo você só tera acesso ao modulo de autor, as avaliações iniciam dia {$data_ini_ava_br} após essa data  caso seu cadastro seja aprovado pelos administradores do evento você terá acesso ao modulo de avaliação, agradecemos a compreensão");
 			return redirect('/autor/trabalhos/listar');
+
+		} else if ( $avaliador[0]->status != 1 && isset($pessoa->sobrenome)) {
+
+			session()->flash('mensagem', "O seu cadastro como avaliador ainda não foi aprovado pelos administradores por esse motivo você só tera acesso ao modulo de autor");
+			return redirect('/autor/trabalhos/listar');
+
+		} else if (!isset($pessoa->sobrenome)) {
+
+			session()->flash('msg', "Preencha todos os seus dados para que os administradores possam conferir e aprovar o seu cadasatro como avaliador");
+			return view('.site.cadastrar', compact('pessoa'));
+
 		}
 	}
 

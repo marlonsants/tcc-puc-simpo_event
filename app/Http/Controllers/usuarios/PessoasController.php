@@ -110,22 +110,24 @@ class PessoasController extends Controller
     public function editarPessoa(Request $request, $id)
     {
         $dados = $request->all();
-
-        echo '<pre>'; 
-        echo var_dump($dados);
-        echo '</pre>';
         $pessoa = $this->pessoa->find($id);
         $update = $pessoa->update($dados);
         
         $doc = array('numero' => $dados['numero_doc'], 'tipo_documento_id' => $dados['tipo_doc']);
+        if (isset($pessoa) && count($pessoa->documento()->get()) > 0) {
+            
+            DB::table('documentos_pessoas')
+            ->where('pessoa_id', $id)
+            ->update($doc);
+        } else {
+           $doc['pessoa_id'] =  $id;
+           Documentos_pessoas::SetDocumento($doc);
+        }
         
-        $update = DB::table('documentos_pessoas')
-        ->where('pessoa_id', $id)
-        ->update($doc);
-
         $acesso = Eventos_acesso_id::getAcessoNoEvento(session('id'), session('evento_id'));
         $acesso = $acesso[0]->acesso_id;
-        if ($update) {
+        
+        if ($acesso != null) {
 
             session()->put('pessoa_nome', $dados['nome']);
             if ($acesso == 1) {

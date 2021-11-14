@@ -502,10 +502,13 @@ $tiposDeDocumentos = Documentos_tipos::GetTipos();
                             <div class="row">
                                 <div class="col-md-6" >
                                     <label>E-mail *</label>
-                                    <input required type="email" min="8" id="email" name="email" class="form-control" placeholder="Email" value="{{$pessoa->email or old('email')}}">
+                                    @if(isset($pessoa))
+                                        <input disabled required type="email" min="8" id="email" name="email" class="form-control" placeholder="Email" value="{{$pessoa->email or old('email')}}">
+                                    @else
+                                        <input required type="email" min="8" id="email" name="email" class="form-control" placeholder="Email" value="{{$pessoa->email or old('email')}}">
+                                    @endif
                                 </div>
-                                @if(isset($pessoa))
-                                @else 
+                                @if(!isset($pessoa))
                                 <div class="col-md-3" >
                                     <label>Senha *</label>
                                     <input required type="password" name="senha" id="senha" class="form-control" placeholder="Senha" >

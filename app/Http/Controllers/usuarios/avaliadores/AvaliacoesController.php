@@ -50,7 +50,7 @@ class avaliacoesController extends Controller
         $trabalho_id = $request->trabalho_id;
         $notaFinal = Notas::notaFinal($trabalho_id);
         $notaFinal = $notaFinal[0]->notaFinal;
-        // dd($notaFinal);
+        
         // altera o status de Atribuicoes_avaliacoes para concluida = 3
         Atribuicoes_avaliacoes::concluirAvaliacao($trabalho_id);
         
