@@ -16,11 +16,6 @@ class ResultadosController extends Controller
     public function buscaResultados(){
     	$trabalhos = Trabalho::buscaTodosAprovados(5);
 
-    	// foreach ($trabalhos as $trab) {
-    	// 	$trab->autores = Trabalho::buscaAutoresDoTrabalho($trab->id);
-
-    	// }
-
     	return view('site.resultados',compact('trabalhos'));
     }
 
