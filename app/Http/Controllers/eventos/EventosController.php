@@ -61,13 +61,14 @@ class EventosController extends Controller
 		}	
 	}
 
-	public function editar(){
-		$evento = Evento::find(session('evento_id'));
-		$verificaAdm = Eventos_acesso_id::select('pessoa_id')
-						->where('acesso_id',4)
-						->where('evento_id',session('evento_id') )
+	public function editar($evento_id){
+		$acessoAdministradorMaster = 4;
+		$evento = Evento::find($evento_id);
+		$verificaSeEAdiministradorMaster = Eventos_acesso_id::select('pessoa_id')
+						->where('acesso_id', $acessoAdministradorMaster)
+						->where('evento_id',$evento_id )
 						->get();
-		if(!empty($verificaAdm[0]) ){
+		if(!empty($verificaSeEAdiministradorMaster[0]) ){
 			return view('.usuarios.administradores.criar_eventos',compact('evento'));	
 		}else{
 			return redirect()->back();
@@ -76,16 +77,16 @@ class EventosController extends Controller
 		
 	}
 
-	public function editarEvento(Request $request, $id){
+	public function editarEvento(Request $request, $evento_id){
 		$dados = $request->all();
-		$evento = Evento::find($id);
+		$evento = Evento::find($evento_id);
 		$update = $evento->update($dados);
 
 		try
 		{	
 			if($request->file('logoEvento') != null )
 			{
-				EventosController::uploadLogoDoEvento($request,$id);
+				EventosController::uploadLogoDoEvento($request,$evento_id);
 			}
 		}		
 		catch (Exception  $e)
@@ -201,6 +202,13 @@ class EventosController extends Controller
 		}
 	}
 
+	public function inativarEvento($evento_id) {
+		$evento = Evento::find($evento_id);
+		$evento->visible = !$evento->visible;
+		$evento->save();
+
+		return redirect('/administrador/eventos');
+	}
 
 
 }

@@ -21,12 +21,18 @@ class AdmEventosController extends Controller
 	
 
 	public function listaEventos(){
+		$eventos = $this->getEventosAdministrador();
+		return view('usuarios/administradores/listar_eventos', compact('eventos'));
+	}
+
+	private function getEventosAdministrador() {
 		$eventos = DB::table('eventos_acesso_id as ea')
 		->join('eventos as e', 'e.id', '=', 'ea.evento_id')
 		->where('ea.pessoa_id','=', session('id'))
 		->select('e.*')
 		->get();
-		return view('usuarios/administradores/home', compact('eventos'));
+
+		return $eventos;
 	}
 
 	public function selecionaEvento(Request $request){

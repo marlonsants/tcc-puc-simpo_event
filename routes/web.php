@@ -35,13 +35,13 @@ Route::post('/alterasenha', 'usuarios\PessoasController@alteraSenha');
 
 Route::resource('/eventos','eventos\EventosController@listarEventos');//listar eventos
 
-Route::get('/escolher_evento/{id}','eventos\EventosController@acessarEvento');//listar eventos
+Route::get('/escolher_evento/{id}','eventos\EventosController@acessarEvento');
 
-Route::resource('/definir_acesso','eventos\AcessoController@getAcesso');//listar eventos
-Route::resource('/termo_compromisso','eventos\AcessoController@getTermo');//listar eventos
-Route::resource('/aceitar_termo','eventos\AcessoController@aceitarTermo');//atualizar evento_acesso_id para 1- aceito
-Route::resource('/sistema','eventos\AcessoController@acessarSistema');//listar eventos
-Route::resource('/resultado/evento','eventos\ResultadosController@buscaResultados');//listar eventos
+Route::resource('/definir_acesso','eventos\AcessoController@getAcesso');
+Route::resource('/termo_compromisso','eventos\AcessoController@getTermo');
+Route::resource('/aceitar_termo','eventos\AcessoController@aceitarTermo');
+Route::resource('/sistema','eventos\AcessoController@acessarSistema');
+Route::resource('/resultado/evento','eventos\ResultadosController@buscaResultados');
 Route::post('/Evento/uploadLogo','eventos\EventosController@uploadLogoDoEvento');
 
 #########################################################################################################	
@@ -69,6 +69,7 @@ Route::group(['prefix'=>'pessoa'],function(){
 //Administradores
 Route::group(['middleware'=>'AcessoAdministrador','prefix'=>'administrador'],function(){
 
+	Route::resource('/', 'charts\GraficosController@graficoAnalitico');
 	Route::get('/cadastrar','usuarios\administrador\AdminController@viewCadastrar');
 
 	Route::get('/editar/permissao','usuarios\administrador\AdminController@viewEditarPermissoes');
@@ -79,22 +80,23 @@ Route::group(['middleware'=>'AcessoAdministrador','prefix'=>'administrador'],fun
 	
 	Route::post('/cadastrar/novo', 'usuarios\administrador\AdminController@cadastrarAdm');
 
-	Route::get('/editarperfil','usuarios\PessoasController@editar'); //editarPerfil
+	Route::get('/editarperfil','usuarios\PessoasController@editar');
 
-	Route::resource('/home', 'usuarios\administrador\AdmEventosController@listaEventos');
-	Route::resource('/', 'usuarios\administrador\AdmEventosController@listaEventos');
+	Route::get('/eventos', 'usuarios\administrador\AdmEventosController@listaEventos');
 	Route::resource('/escolherevento', 'usuarios\administrador\AdmEventosController@selecionaEvento');
 	Route::get('/eventos/novo',function(){
 		return view('/usuarios/administradores/criar_eventos');
 	});
 	Route::resource('/eventos/novo/cadastrar', 'eventos\EventosController@novoEvento');
+	Route::get('/evento/inativar/{id}', 'eventos\EventosController@inativarEvento' );
 	Route::put('/editar/evento/{id}', 'eventos\EventosController@editarEvento');
-	Route::get('/editarEvento', 'eventos\EventosController@editar');
+	Route::get('/editarEvento/{id}', 'eventos\EventosController@editar');
 	Route::post('/cadastros_basicos/categorias/add','usuarios\administrador\CategoriasController@criaCategoria');
 	Route::post('/cadastros_basicos/areas/add','usuarios\administrador\AreasController@criaArea');
 
 	//Administradores-Autores
-
+	
+	Route::get('/exportar/autores', 'usuarios\administrador\AutorController@exportarAutores');
 	// busca informações da pessoa pra mostrar no modal
 	Route::get('/buscaPessoa/{id}', 'usuarios\PessoasController@buscaPessoa');
 
@@ -147,7 +149,7 @@ Route::group(['middleware'=>'AcessoAdministrador','prefix'=>'administrador'],fun
 	Route::resource('/cadastros_basicos/criterios/delete','usuarios\administrador\CriteriosController@deletarCriterios');
 	Route::resource('/cadastros_basicos/criterios/update','usuarios\administrador\CriteriosController@updateCriterios');
 	Route::get('/analise/completa','charts\GraficosController@graficoAnalitico');
-	//rota que criei para testar a view pré-avaliar, nescessita mudanças
+	
 	Route::resource('/pre_avaliar','trabalhos\TrabalhosController@buscaTrabalhosPreAvaliacao');
 	Route::post('/pre_avaliador/parecer','usuarios\administrador\Pre_avaliacaoController@inserirParecer');
 	Route::post('/deletar/parecer','usuarios\administrador\Pre_avaliacaoController@deletarParecer');
@@ -155,7 +157,7 @@ Route::group(['middleware'=>'AcessoAdministrador','prefix'=>'administrador'],fun
 	Route::post('/avaliadores/atribuir/add','trabalhos\AtribuicoesController@insereAtribuicao');
 	Route::post('/avaliadores/atribuir/totalAtribuicoesAvaliador','trabalhos\AtribuicoesController@totalAtribuicoesAvaliador');
 	Route::post('/avaliadores/atribuir/delete','trabalhos\AtribuicoesController@deleteAtribuicao');
-	// solicitação de correção de traballho 
+	
 	Route::get('/trabalhos/correcao/{trabalho_id}','usuarios\administrador\Pre_avaliacaoController@solcitarCorrecao');
 	Route::get('avalidores/atribuicoes','usuarios\administrador\AvaliadoresController@atribuicoesDosAvalidores');
 	
