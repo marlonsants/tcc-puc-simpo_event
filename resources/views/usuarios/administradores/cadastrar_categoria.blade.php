@@ -41,7 +41,7 @@
 						<form action="/administrador/cadastros_basicos/categorias/delete" method="post" style="display:inline;">
 							{!!csrf_field()!!}
 							<input type="hidden" name="id" value="{{$categoria->id}}">
-							<button class="btn btn-sm btn-danger" type="submit"><span class="glyphicon glyphicon-trash"/></button>
+							<button class="btn btn-sm btn-danger" type="submit"><span class="glyphicon glyphicon-trash"></button>
 						</form>
 					</td>
 				</tr>

@@ -174,11 +174,11 @@ class AcessoController extends Controller
 					# code...
 					break;
 					case 3:
-					return redirect('/administrador/home');
+					return redirect('/administrador/analise/completa');
 					# code...
 					break;
 					case 4:
-					return redirect('/administrador/home');
+					return redirect('/administrador/analise/completa');
 					# code...
 					break;
 					default:

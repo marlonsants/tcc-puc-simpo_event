@@ -11,7 +11,7 @@
 		<div class="{{Session::get('alertType')}} text-center"><p><b>{{Session::get('mensagem')}}</b></p></div>
 		@endif
 		<div class="col-md-12">
-			<h4 class="text-center">Avaliação auxiliar</h4><hr>
+			<h4 class="text-center">Pré avaliação</h4><hr>
 			<table class="table table-bordered table-responsive table-condensed table-bordered" id="pre_avaliacao">
 				<thead>
 					<tr>
