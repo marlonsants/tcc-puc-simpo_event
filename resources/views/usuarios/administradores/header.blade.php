@@ -1,6 +1,15 @@
 <?php
 use App\Model\Adm_permissoes;
 use App\Model\Evento;
+
+define('NIVEL_ACESSO_MASTER', 4);
+
+define('PERMISSAO_ACESSO_AUTOR', 1);
+define('PERMISSAO_ACESSO_TRABALHOS', 2);
+define('PERMISSAO_ACESSO_AVALIADOR', 3);
+define('PERMISSAO_ACESSO_CADASTROS', 4);
+define('PERMISSAO_ACESSO_PAINEL_ANALITICO', 5);
+define('PERMISSAO_ACESSO_PRE_AVALIACAO', 6);
 if(session('acesso_id') != 4){
   $permissoes = Adm_permissoes::buscaPermissoes(session('id'));  
 }else{
@@ -45,9 +54,9 @@ $nome_evento = Evento::ver_nome_evento();
     <nav class="navbar navbar-inverse">
       <div class="navbar-header">
         @forelse($nome_evento as $nome)
-        <a href="/administrador/home" class="navbar-brand">{{ $nome->nome_evento }}</a>
+        <a href="/administrador/analise/completa" class="navbar-brand">{{ $nome->nome_evento }}</a>
         @empty
-        <a href="/administrador/home" class="navbar-brand">System4college</a>
+        <a href="/administrador/analise/completa" class="navbar-brand">System4college</a>
         @endforelse
         <button type="button" class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">Menu</button>
       </div>
@@ -55,40 +64,16 @@ $nome_evento = Evento::ver_nome_evento();
 
       <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav">
-          @if(session()->get('acesso_id') == 4 || in_array(1,$permissoes))
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Autores <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li class="disabled"><a href="#">Usuários</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="/administrador/autores/listar">Listar autores</a></li>
-              <li role="separator" class="divider"></li>
-
-            </ul>
-          </li>
-          @endif
-          @if(session()->get('acesso_id') == 4 || in_array(2,$permissoes))
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Trabalhos <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="/administrador/trabalhos/listar">Listar trabalhos</a>      
-              </li> 
-
-            </ul>
-          </li>
+          @if(session()->get('acesso_id') == NIVEL_ACESSO_MASTER || in_array(PERMISSAO_ACESSO_AUTOR,$permissoes))
+            <li><a href="/administrador/autores/listar">Autores</a></li>
           @endif
 
-          @if(session()->get('acesso_id') == 4 || in_array(3,$permissoes))
+          @if(session()->get('acesso_id') == NIVEL_ACESSO_MASTER || in_array(PERMISSAO_ACESSO_AVALIADOR,$permissoes))
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Avaliadores <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li class="disabled"><a href="#">Usuários</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="/administrador/avaliadores/listar">Listar Avaliadores</a></li>
-              <li role="separator" class="divider"></li>
-              <li class="disabled"><a href="#">Trabalhos</a></li>
-              <li role="separator" class="divider"></li>
+              <li><a href="/administrador/avaliadores/listar">Avaliadores</a></li>
               <li><a href="/administrador/avaliadores/atribuir">Atribuir Avaliadores</a></li>
               <li><a href="/administrador/avaliadores/progresso">Progresso de avaliações</a></li>
               <li role="separator" class="divider"></li>
@@ -96,55 +81,41 @@ $nome_evento = Evento::ver_nome_evento();
           </li>
           @endif
 
-          @if(session()->get('acesso_id') == 4 || in_array(4,$permissoes))
+          @if(session()->get('acesso_id') == NIVEL_ACESSO_MASTER || in_array(PERMISSAO_ACESSO_TRABALHOS,$permissoes))
+            <li>
+              <a href="/administrador/trabalhos/listar">Trabalhos</a>      
+            </li> 
+          @endif
+
+          @if(session()->get('acesso_id') == NIVEL_ACESSO_MASTER || in_array(PERMISSAO_ACESSO_CADASTROS,$permissoes))
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li role="separator" class="divider"></li>
-              <li><a href="/administrador/cadastrar">Novo Administrador</a></li>
-              @if($Eventos[0]->fim_submissao >= date('Y-m-d'))
-              <li role="separator" class="divider"></li>
-              <li class="disabled"><a href="#">Cadastros Básicos</a></li>
-              <li role="separator" class="divider"></li>
+              <li><a href="/administrador/cadastrar">Administrador</a></li>
+              <li><a href="/administrador/eventos">Eventos</a></li>
               <li><a href="/administrador/cadastros_basicos/categorias">Categorias</a></li>
               <li><a href="/administrador/cadastros_basicos/areas">Áreas</a></li>
               <li><a href="/administrador/cadastros_basicos/criterios">Critérios de Avaliações</a></li>
               <li role="separator" class="divider"></li>
-              @endif
             </ul> 
           </li>
           @endif
-
-          @if(session()->get('acesso_id') == 4 || in_array(5,$permissoes)) 
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li class="disabled"><a href="#">Graficos</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="/administrador/analise/completa">Grafico Analítico</a></li>
-              <li role="separator" class="divider"></li>
-            </ul>
-          </li>
+          
+          @if(session()->get('acesso_id') == NIVEL_ACESSO_MASTER || in_array(PERMISSAO_ACESSO_PRE_AVALIACAO,$permissoes)) 
+          <li><a href="/administrador/pre_avaliar" title="Avaliação auxiliar">Pré avaliação</a></li>
           @endif
+          <li><a href="/administrador/analise/completa">Painel Analítico</a></li>
 
-          @if(session()->get('acesso_id') == 4 || in_array(6,$permissoes)) 
-          <li><a href="/administrador/pre_avaliar" title="Avaliação auxiliar">Avaliação auxiliar</a></li>
-          @endif
-
-          @if(session()->get('acesso_id') == 4) 
+          @if(session()->get('acesso_id') == NIVEL_ACESSO_MASTER) 
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span></a>
              <ul class="dropdown-menu">
-               <li><a href="/administrador/eventos/novo"> Criar Evento</a></li>
-              <li><a href="/administrador/editarEvento"> Editar Evento</a></li>
-              <li><a href="/administrador/editar/permissao">Editar permissões</a></li>
+              <li><a href="/administrador/editar/permissao">Editar permissões dos administradores</a></li>
             </ul>
           </li>
           @endif
-          <!-- <li><a href="#" title="Download">Downloads</a></li> -->
-          <!-- <li><a href="#" title="Recordações">Recordações</a></li> -->
         </ul>
-        
         <div class="navbar-right margin_right" style="margin-right: 5px">   
           <ul class="nav navbar-nav ">
             <li class="dropdown"> 
@@ -177,8 +148,6 @@ $nome_evento = Evento::ver_nome_evento();
           <nav >
             <?php
             $array = array(
-              '/administrador/home',
-              '/administrador/eventos/novo',
               '/administrador/cadastros_basicos/categorias',
               '/administrador/cadastros_basicos/areas',
               '/administrador/cadastros_basicos/criterios'
@@ -186,10 +155,6 @@ $nome_evento = Evento::ver_nome_evento();
               ?>
               @if(session()->has('evento_id') and in_array($_SERVER ['REQUEST_URI'], $array))
               <ul class="nav nav-tabs nav-justified" id="menu">
-                <li role="presentation" id="selecionaevento" ><a href="/administrador/home" class=" hvr-wobble-horizontal">Selecionar evento</a></li>
-
-                <li role="presentation" id="novoevento"><a href="/administrador/eventos/novo" class=" hvr-wobble-horizontal">Criar novo evento</a></li>
-                
                 @if($Eventos[0]->fim_submissao >= date('Y-m-d'))
                 <li role="presentation" id="categoria"><a href="/administrador/cadastros_basicos/categorias" class=" hvr-wobble-horizontal">Cadastrar categorias</a></li>
                 <li role="presentation" id="area"><a href="/administrador/cadastros_basicos/areas" class=" hvr-wobble-horizontal">Cadastrar áreas</a></li>
@@ -198,7 +163,6 @@ $nome_evento = Evento::ver_nome_evento();
               </ul>
               @elseif(in_array($_SERVER ['REQUEST_URI'], $array))
               <ul class="nav nav-tabs nav-justified" id="menu">
-                <li role="presentation" id="selecionaevento" ><a href="/administrador/home" class=" hvr-wobble-horizontal">Selecionar evento</a></li>
                 <li role="presentation" id="novoevento"><a href="/administrador/eventos/novo" class=" hvr-wobble-horizontal">Criar novo evento</a></li>
               </ul>
               @endif
