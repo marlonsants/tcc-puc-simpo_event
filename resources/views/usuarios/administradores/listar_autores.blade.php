@@ -10,28 +10,10 @@
 <div class="row">
 	<div class="container-fluid">
 		<div class="col-xs-12 col-md-12">
-			
-			<!-- modal que mopstra as informações detalhadas do autor -->
-			<div class="modal fade" id="modal_detalhes">
-				<div class="modal-dialog" style="width: 90%" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<center><h4 class="modal-title"></h4></center>
-						</div>
-						<div class="modal-body" id="conteudo">
-							<table class="table table-bordered table-responsive table-condensed table-striped">
-								<thead id='ModalHead' class="thead-padrao"></thead>
-								<tbody id='body'></tbody>
-							</table>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal"><FIELDSET>Fechar</FIELDSET></button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- fim do modal -->
 			<h4 class="text-center">Lista de autores cadastrados</h4><hr>
+			<a target="_blank" class="btn btn-success pull-right" href="/administrador/exportar/autores">
+				Exportar em PDF <span class="glyphicon glyphicon-open-file"></span>
+			</a>
 			<table class="table table-bordered table-responsive table-condensed  table-bordered table-stripped" id="lista_autores">
 				<thead>
 					<tr>
@@ -62,6 +44,27 @@
 		</div>
 	</div>
 </div>
+
+<!-- modal que mopstra as informações detalhadas do autor -->
+<div class="modal fade" id="modal_detalhes">
+	<div class="modal-dialog" style="width: 90%" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<center><h4 class="modal-title"></h4></center>
+			</div>
+			<div class="modal-body" id="conteudo">
+				<table class="table table-bordered table-responsive table-condensed table-striped">
+					<thead id='ModalHead' class="thead-padrao"></thead>
+					<tbody id='body'></tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal"><FIELDSET>Fechar</FIELDSET></button>
+			</div>
+		</div>
+	</div>
+</div>
+	
 <script type="text/javascript">
 	ModalDetPessoa('modal_detalhes');
 	ModalTrabalhosDoAutor('modal_detalhes');
