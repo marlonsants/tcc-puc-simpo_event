@@ -29,15 +29,15 @@
 					
 					<div class="col-md-4">
 						<label>Nome do evento</label>
-						<input type="text" value="{{$evento->nome_evento or old('nome_evento')}}" name="nome_evento" placeholder="Nome do Evento" class="form-control">
+						<input required type="text" value="{{$evento->nome_evento or old('nome_evento')}}" name="nome_evento" placeholder="Nome do Evento" class="form-control">
 					</div>
 					<div class="col-md-4">
 						<label>Instituição</label>
-						<input type="text" value="{{$evento->instituicao or old('instituicao')}}" name="instituicao" placeholder="Instituição do Evento" class="form-control">
+						<input required type="text" value="{{$evento->instituicao or old('instituicao')}}" name="instituicao" placeholder="Instituição do Evento" class="form-control">
 					</div>
 					<div class="col-md-4">
 						<label>Endereço de realização</label>
-						<input type="text" value="{{$evento->local_evento or old('local_evento')}}" name="local_evento" placeholder="Endereço completo do Evento" class="form-control">
+						<input required type="text" value="{{$evento->local_evento or old('local_evento')}}" name="local_evento" placeholder="Endereço completo do Evento" class="form-control">
 					</div>
 				</div>
 
@@ -80,24 +80,24 @@
 				<div class="row">
 					<div class="col-md-4">
 						<label>Máximo de trabalhos por autor</label>
-						<input type="number" value="{{$evento->num_trab_autor or old('num_trab_autor')}}" name="num_trab_autor" placeholder="Máximo de Trabalhos por Autor" class="form-control">
+						<input required type="number" value="{{$evento->num_trab_autor or old('num_trab_autor')}}" name="num_trab_autor" placeholder="Máximo de Trabalhos por Autor" class="form-control">
 					</div>
 					<div class="col-md-4">
 						<label>Máximo de autores por trabalho</label>
-						<input type="number" value="{{$evento->max_autores or old('max_autores')}}" name="max_autores" placeholder="Máximo de autores por Trabalho" class="form-control">
+						<input required type="number" value="{{$evento->max_autores or old('max_autores')}}" name="max_autores" placeholder="Máximo de autores por Trabalho" class="form-control">
 					</div>
 					<div class="col-md-4">
 						<label>Máximo de trabalhos por avaliador</label>
-						<input type="number" value="{{$evento->num_trab_avaliador or old('num_trab_avaliador')}}" name="num_trab_avaliador" placeholder="Máximo de trabalhos por Avaliador" class="form-control">
+						<input required type="number" value="{{$evento->num_trab_avaliador or old('num_trab_avaliador')}}" name="num_trab_avaliador" placeholder="Máximo de trabalhos por Avaliador" class="form-control">
 					</div>
 
 					<div class="col-md-6">
 						<label>Máximo de avaliadores por trabalho</label>
-						<input type="number" value="{{$evento->max_avaliadores_trabalhos or old('max_avaliadores_trabalhos')}}" name="max_avaliadores_trabalhos" placeholder="Máximo de avaliadores por trabalho" class="form-control">
+						<input required type="number" value="{{$evento->max_avaliadores_trabalhos or old('max_avaliadores_trabalhos')}}" name="max_avaliadores_trabalhos" placeholder="Máximo de avaliadores por trabalho" class="form-control">
 					</div>
 					<div class="col-md-6">
 						<label>Nota maxima do trabalho</label>
-						<input value="{{$evento->max_nota_trabalhos or old('max_nota_trabalhos')}}" type="number" name="max_nota_trabalhos" placeholder="Nota maxima do trabalho" class="form-control">
+						<input required value="{{$evento->max_nota_trabalhos or old('max_nota_trabalhos')}}" type="number" name="max_nota_trabalhos" placeholder="Nota maxima do trabalho" class="form-control">
 					</div>				
 				</div>
 			</div>
@@ -109,19 +109,19 @@
 				<div class="row">
 					<div class="col-md-3">
 						<label for="">Início das Submissões</label>
-						<input type="date" value="{{$evento->inicio_submissao or old('inicio_submissao')}}" name="inicio_submissao" placeholder="Início das Submissões" class="form-control">
+						<input required type="date" value="{{$evento->inicio_submissao or old('inicio_submissao')}}" name="inicio_submissao" placeholder="Início das Submissões" class="form-control">
 					</div>
 					<div class="col-md-3">
 						<label for="">Fim das Submissões</label>
-						<input type="date" value="{{$evento->fim_submissao or old('fim_submissao')}}" name="fim_submissao" placeholder="Fim das Submissões" class="form-control">
+						<input required type="date" value="{{$evento->fim_submissao or old('fim_submissao')}}" name="fim_submissao" placeholder="Fim das Submissões" class="form-control">
 					</div>
 					<div class="col-md-3">
 						<label for="">Início das Avaliações</label>
-						<input type="date" value="{{$evento->inicio_avaliacoes or old('inicio_avaliacoes')}}" name="inicio_avaliacoes" placeholder="Início das Avaliações" class="form-control">
+						<input required type="date" value="{{$evento->inicio_avaliacoes or old('inicio_avaliacoes')}}" name="inicio_avaliacoes" placeholder="Início das Avaliações" class="form-control">
 					</div>
 					<div class="col-md-3">
 						<label for="">Fim das Avaliações</label>
-						<input type="date" value="{{$evento->fim_avaliacoes or old('fim_avaliacoes')}}" name="fim_avaliacoes" placeholder="Fim das Avaliações" class="form-control">
+						<input required type="date" value="{{$evento->fim_avaliacoes or old('fim_avaliacoes')}}" name="fim_avaliacoes" placeholder="Fim das Avaliações" class="form-control">
 					</div>					
 				</div>
 			</div>
@@ -130,25 +130,25 @@
 				<div class="row">
 					<div class="col-md-3">
 						<label for="">Início das Incrições</label>
-						<input type="date" value="{{$evento->inicio_inscricoes or old('inicio_inscricoes')}}" name="inicio_inscricoes" placeholder="Início das Incrições" class="form-control">
+						<input required type="date" value="{{$evento->inicio_inscricoes or old('inicio_inscricoes')}}" name="inicio_inscricoes" placeholder="Início das Incrições" class="form-control">
 					</div>
 					<div class="col-md-3">
 						<label for="">Fim das Incrições</label>
-						<input type="date" value="{{$evento->fim_inscricoes or old('fim_inscricoes')}}" name="fim_inscricoes" placeholder="Fim das Incrições" class="form-control">
+						<input required type="date" value="{{$evento->fim_inscricoes or old('fim_inscricoes')}}" name="fim_inscricoes" placeholder="Fim das Incrições" class="form-control">
 					</div>
 					<div class="col-md-3">
 						<label for="">Início do Evento</label>
-						<input type="date" value="{{$evento->inicio_evento or old('inicio_evento')}}" name="inicio_evento" placeholder="Início do Evento" class="form-control">
+						<input required type="date" value="{{$evento->inicio_evento or old('inicio_evento')}}" name="inicio_evento" placeholder="Início do Evento" class="form-control">
 					</div>
 					<div class="col-md-3">
 						<label for="">Fim do Evento</label>
-						<input type="date" value="{{$evento->fim_evento or old('fim_evento')}}" name="fim_evento" placeholder="Fim do Evento" class="form-control">
+						<input required type="date" value="{{$evento->fim_evento or old('fim_evento')}}" name="fim_evento" placeholder="Fim do Evento" class="form-control">
 					</div>
 				</div>
 			</div>
 
 			<div class="col-md-6 col-md-offset-3 margin-top-20">
-				<input type="submit" name="cadastrar" class="btn btn-info form-control" value="Cadastrar">	
+				<input required type="submit" name="cadastrar" class="btn btn-info form-control" value="Cadastrar">	
 			</div>
 		</form>
 	</div>
@@ -156,9 +156,9 @@
 
 <script type="text/javascript">
   $('#novoevento').addClass('active');
-  $('#formEvento').submit(function(){
-  	window.location.reload(true);
-  });
+//   $('#formEvento').submit(function(){
+//   	window.location.reload(true);
+//   });
   
   
 </script>
