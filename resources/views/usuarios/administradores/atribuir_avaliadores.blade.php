@@ -13,6 +13,15 @@ $maxTrabalhoAvaliador = Evento::maxTrabalhoAvaliador();
 	<h4 class="text-center">Atribuir avaliadores</h4><hr>
 </div>
 <div class="col-md-9 col-xs-12 col-lg-9" style="overflow: auto">
+	<div class="col-md-8">
+		<h4 class="pull-right">Trabalhos para atribuição de avaliadores</h4>
+	</div>
+	<div class="col-md-4">
+		<a target="_blank" class="btn btn-success pull-right" href="/administrador/exportar/atribuicoesAvaliadores">
+					Exportar em PDF <span class="glyphicon glyphicon-open-file"></span>
+		</a>	
+	</div>
+	
 	
 	<table class="table table-bordered table-hover table-bordered table-stripped" id="trab_atrib_aval">
 		<thead>

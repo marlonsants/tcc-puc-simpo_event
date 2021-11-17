@@ -15,6 +15,9 @@
 				<p class="alert alert-success text-center"><b>{{session('msg')}}</b></p>
 			@endif
 			<h4 class="text-center">Trabalhos cadastrados</h4><hr>
+			<a target="_blank" class="btn btn-success pull-right" href="/administrador/exportar/trabalhos">
+				Exportar em PDF <span class="glyphicon glyphicon-open-file"></span>
+			</a>
 			<table class="table table-bordered table-responsive table-condensed  table-bordered table-stripped" id="tabelaTrabalhos">
 							
 				<thead>

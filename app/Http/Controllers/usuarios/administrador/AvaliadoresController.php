@@ -9,6 +9,7 @@ use App\Model\Pessoa;
 use App\Model\Avaliadores;
 use App\Model\Trabalho;
 use Illuminate\Support\Facades\DB;
+use App\Http\Util\GerarPdfUtil;
 class AvaliadoresController extends Controller
 { 
 	private $avaliador;
@@ -16,7 +17,13 @@ class AvaliadoresController extends Controller
 	public function __construct(Avaliadores $avaliador){
 		$this->avaliador = $avaliador;
 	}
+
 	public function listaAvaliadores(){
+		$avaliadores = $this->getListaAvaliadores();
+		return view('/usuarios/administradores/listar_avaliadores', compact('avaliadores'));
+	}
+
+	private function getListaAvaliadores() {
 		$evento_id = session()->get('evento_id');
 		$avaliadores = DB::table('avaliadores')
 		->join('pessoas', 'pessoas.id',  '=', 'avaliadores.pessoa_id')
@@ -25,7 +32,8 @@ class AvaliadoresController extends Controller
 		->select('pessoas.*','avaliadores.*','areas.nome as area')
 		->orderBy('pessoas.nome')
 		->get();
-		return view('/usuarios/administradores/listar_avaliadores', compact('avaliadores'));
+
+		return $avaliadores;
 	}
 
 	public function autenticaAvaliador($id,$acao){
@@ -82,6 +90,69 @@ class AvaliadoresController extends Controller
 			$avaliadores = Trabalho::getAvaliadoresExcetoAutoresDoTrabalho($trabalho_id);
 			 
 			return $avaliadores;
+		}
+
+
+		public function exportarAvaliadores() {
+			$avaliadores = $this->getListaAvaliadores();
+			
+			$html = $this->getHtmlAvaliadoresParaExportacao($avaliadores);
+			
+			GerarPdfUtil::gerarPdf($html);
+		}
+
+		private function getHtmlAvaliadoresParaExportacao($avaliadores){
+
+			$html = "
+				<!DOCTYPE html>
+				<html>
+				<head>
+					<meta charset='utf-8'>
+					<style type='text/css'>";
+			$html.= GerarPdfUtil::getCssPdf();			
+			$html.=	"</style>
+				</head>
+				<body>";
+			
+			$html.= '<h4 class="text-center">Lista de avaliadores cadastrados</h4>
+					<table  class="responsive-table" id="lista_autores">
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>Sobrenome</th>
+								<th>Area</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>';
+							foreach ($avaliadores as $avaliador){
+								
+			$html.=				'<tr>
+									<td>'.$avaliador->nome.'</td>
+									<td>'.$avaliador->sobrenome.'</td>
+									<td>'.$avaliador->area.'</td>
+									<td>';
+										if ( $avaliador->status == 0 ) {
+		    $html.=								'<p class="text-primary">Não verificado <span class="glyphicon glyphicon-question-sign"/></p>';
+										}
+										
+										if ( $avaliador->status == 1 ) {
+		    $html.=								'<p class="text-success">Cadastro aprovado <span class="glyphicon glyphicon-ok-sign"/></p>';
+										}
+										
+										if ( $avaliador->status == 2) {
+		    $html.=								'<p class="text-danger">Cadastro reprovado <span class="glyphicon glyphicon-remove-sign"/></p>';
+										}
+											
+		    $html.=					'</td>
+								</tr>';
+							}
+			$html.=		'</tbody>
+					</table>
+				</body>
+			</html>';
+	
+			return $html;
 		}
 
 }

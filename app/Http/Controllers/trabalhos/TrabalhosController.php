@@ -21,6 +21,7 @@ use App\Model\Pre_avaliacao;
 use App\Model\User;
 use App\Model\Area;
 use App\Model\Categoria;
+use App\Http\Util\GerarPdfUtil;
 
 function in_array_field($needle, $needle_field, $haystack, $strict = false) { 
 	    if ($strict) { 
@@ -52,6 +53,12 @@ class TrabalhosController extends Controller
 		$dataAtual = $datas['dataAtual'];
 		$data_ini_ava = $datas['data_ini_ava'];
 
+		$trabalhos = $this->getListaTrabalhos();
+		
+		return view('/usuarios/administradores/listar_trabalhos',compact('trabalhos','dataAtual','data_ini_ava'));
+	}
+
+	private function getListaTrabalhos() {
 		$trabalhos = $this->trabalho->buscaTodosTrabalhos();
 		
 		foreach ($trabalhos as $key => $trabalho) {
@@ -65,8 +72,8 @@ class TrabalhosController extends Controller
         		$trabalho->notaFinal = $notaFinal;
 			}
         }
-		
-		return view('/usuarios/administradores/listar_trabalhos',compact('trabalhos','dataAtual','data_ini_ava'));
+
+		return $trabalhos;
 	}
 
 	public function buscaTrabalhosPreAvaliacao(){
@@ -281,6 +288,58 @@ class TrabalhosController extends Controller
 		}
 					
 		
+	}
+
+	public function exportarTrabalhos() {
+		$trabalhos = $this->getListaTrabalhos();
+		
+		$html = $this->getHtmlTrabalhosParaExportacao($trabalhos);
+
+		return GerarPdfUtil::gerarPdf($html);
+				
+	}
+
+	private function getHtmlTrabalhosParaExportacao($trabalhos){
+
+		$html = "
+			<!DOCTYPE html>
+			<html>
+			<head>
+				<meta charset='utf-8'>
+				<style type='text/css'>";
+		$html.= GerarPdfUtil::getCssPdf();			
+		$html.=	"</style>
+			</head>
+			<body>";
+		
+		$html.= '<h4 class="text-center">Lista de trabalhos cadastrados</h4>
+				<table  class="responsive-table" id="lista_trabalhos">
+					<thead>
+						<tr>
+							<th>Título</th>
+							<th>Área</th>
+							<th>Categoria</th>
+							<th>Status</th>
+							<th>Nota final</th>
+						</tr>
+					</thead>
+					<tbody>';
+						foreach ($trabalhos as $trabalho){
+							
+		$html.=				'<tr>
+								<td>'.$trabalho->titulo.'</td>
+								<td>'.$trabalho->area.'</td>
+								<td>'.$trabalho->categoria .'</td>
+								<td>'.$trabalho->status.'</td>
+								<td>'.number_format($trabalho->notaFinal, 2).'</td>
+							</tr>';
+						}
+		$html.=		'</tbody>
+				</table>
+			</body>
+		</html>';
+
+		return $html;
 	}
 
 

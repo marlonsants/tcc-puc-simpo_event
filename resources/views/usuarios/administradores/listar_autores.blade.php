@@ -50,7 +50,7 @@
 	<div class="modal-dialog" style="width: 90%" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<center><h4 class="modal-title"></h4></center>
+				<h4 class="modal-title text-center"></h4>
 			</div>
 			<div class="modal-body" id="conteudo">
 				<table class="table table-bordered table-responsive table-condensed table-striped">

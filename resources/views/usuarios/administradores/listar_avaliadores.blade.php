@@ -35,6 +35,9 @@
 
 		<!-- =============================================================== -->
 			<h4 class="text-center">Lista de Avaliadores cadastrados</h3><hr>
+			<a target="_blank" class="btn btn-success pull-right" href="/administrador/exportar/avaliadores">
+				Exportar em PDF <span class="glyphicon glyphicon-open-file"></span>
+			</a>
 				@if(session()->has('msg'))
 				<p class="alert alert-info text text-center"><b>{{session('msg')}}</b></p>
 				@endif

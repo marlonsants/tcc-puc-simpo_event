@@ -10,6 +10,10 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h4 class="text-center">Progresso das avaliações</h4><hr>
+			<a target="_blank" class="btn btn-success pull-right margin-bottom-30" href="/administrador/exportar/progressoAvaliacao">
+					Exportar em PDF <span class="glyphicon glyphicon-open-file"></span>
+			</a>
+			
 			<table class="table table-responsive table-condensed table-bordered table-striped">
 				<thead>
 					<tr>

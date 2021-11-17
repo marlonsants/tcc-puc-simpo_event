@@ -116,6 +116,7 @@ Route::group(['middleware'=>'AcessoAdministrador','prefix'=>'administrador'],fun
 	Route::get('/autores/buscaTrabalho/{id}/{view}','usuarios\trabalhos\TrabalhosController@buscaTrabalhos');
 
 	Route::resource('/trabalhos/listar','trabalhos\TrabalhosController@buscaTrabalhos');
+	Route::resource('/exportar/trabalhos','trabalhos\TrabalhosController@exportarTrabalhos');
 
 	Route::get('/autores/trabalhos/filtro/{[ativos]}','usuarios\trabalhos\TrabalhosController@filtrarTrabalhos');
 
@@ -131,13 +132,16 @@ Route::group(['middleware'=>'AcessoAdministrador','prefix'=>'administrador'],fun
 
 	//listar todos os avalidores cadastrados
 	Route::resource('/avaliadores/listar', 'usuarios\administrador\AvaliadoresController@listaAvaliadores');
+	Route::resource('/exportar/avaliadores', 'usuarios\administrador\AvaliadoresController@exportarAvaliadores');
 	Route::get('/avaliadores/atribuir',function(){
 		return view('/usuarios/administradores/atribuir_avaliadores');
 	});
 	Route::get('/avaliadores/getAvaliadoresExecetoAutores/{id}','usuarios\administrador\AvaliadoresController@GetAvaliadoresExcetoAutoresDoTrabalho');
 	Route::get('/avaliadores/atribuir/atualizarPagina','trabalhos\AtribuicoesController@buscaTrabalhosAtribuirAvaliador');
+	Route::get('/exportar/atribuicoesAvaliadores','trabalhos\AtribuicoesController@exportarAtribuicoesAvaliadores');
 	Route::get('/avaliadores/atribuir/buscaAvaliadorDoTrabalho/{id}','trabalhos\TrabalhosController@getAvaliadoresDoTrabalhoPeloId');
 	Route::get('/avaliadores/progresso','usuarios\avaliadores\AvaliacoesController@progresso');
+	Route::get('/exportar/progressoAvaliacao','usuarios\avaliadores\AvaliacoesController@exportarProgressoAvaliacao');
 	Route::get('/cadastros_basicos/categorias','usuarios\administrador\CategoriasController@listaCategorias');
 	Route::resource('/cadastros_basicos/categorias/delete','usuarios\administrador\CategoriasController@deletaCategorias');
 	Route::resource('/cadastros_basicos/categorias/update','usuarios\administrador\CategoriasController@updateCategorias');

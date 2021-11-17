@@ -13,6 +13,7 @@ use App\Model\Atribuicoes_avaliacoes;
 use App\Model\Notas;
 use App\Model\Evento;
 use Illuminate\Support\Facades\DB;
+use App\Http\Util\GerarPdfUtil;
 
 class avaliacoesController extends Controller
 {
@@ -77,7 +78,7 @@ class avaliacoesController extends Controller
     public function progresso(){
 
         $trabalho = new Trabalho();
-        $trabalhos = $trabalho->buscaTodosTrabalhos();
+        $trabalhos = $this->getListaProgressoAvaliacaoTrabalhos();
         $evento = new Evento();
         $datas = $evento->datasConf();
         $avaliadores = Atribuicoes_avaliacoes::buscaAtribuicoes();
@@ -86,9 +87,15 @@ class avaliacoesController extends Controller
         $dataAtual = $datas['dataAtual'];
         $data_ini_ava = $datas['data_ini_ava'];
 
-        //$data_fim_ava = $datas['data_fim_ava'];
+        $parecer_avaliacao = Parecer_avaliacao::buscaParecerAvaliador();
+        return view('usuarios/administradores/progresso_avaliacoes', compact('trabalhos','dataAtual','data_ini_ava','maxAvaliadores','avaliadores','parecer_avaliacao'));
+    }
 
-         if(isset($trabalhos[0])){
+    private function getListaProgressoAvaliacaoTrabalhos() {
+        $trabalho = new Trabalho();
+		$trabalhos =  $trabalho->buscaTodosTrabalhos();
+
+        if(isset($trabalhos[0])){
             foreach ($trabalhos as $trabalho) {
                $concluida = Atribuicoes_avaliacoes::avaliacoesConcluidas($trabalho->id);
                $atribuida = Atribuicoes_avaliacoes::qtddDeAvaliacoesDoTrabalho($trabalho->id);
@@ -100,11 +107,65 @@ class avaliacoesController extends Controller
             $trabalhos = array();
         }
 
-        $parecer_avaliacao = Parecer_avaliacao::buscaParecerAvaliador();
-
-        //dd($parecer_avaliacao);
-        //dd($avaliadores);
-
-        return view('usuarios/administradores/progresso_avaliacoes', compact('trabalhos','dataAtual','data_ini_ava','maxAvaliadores','avaliadores','parecer_avaliacao'));
+        return $trabalhos;
     }
+
+    public function exportarProgressoAvaliacao() {
+		$trabalhos =  $this->getListaProgressoAvaliacaoTrabalhos();
+		$html = $this->getHtmlProgressoAvaliacaoParaExportacao($trabalhos);
+        // return $html;
+		GerarPdfUtil::gerarPdf($html);
+	}
+
+	private function getHtmlProgressoAvaliacaoParaExportacao($trabalhos){
+
+		$html = "
+			<!DOCTYPE html>
+			<html>
+			<head>
+				<meta charset='utf-8'>
+				<style type='text/css'>";
+		$html.= GerarPdfUtil::getCssPdf();			
+		$html.=	"</style>
+			</head>
+			<body>";
+		
+		$html.= '<h4 class="text-center">Progresso das avaliações dos trabalhos</h4>
+				<table  class="responsive-table" id="lista_progresso_avaliacoes">
+					<thead>
+						<tr>
+                            <td>Trabalho</td>
+                            <td>Progresso da avaliação</td>
+                            <td>Avaliações concluídas</td>
+                            <td>Status</td>
+						</tr>
+					</thead>
+					<tbody>';
+						foreach ($trabalhos as $trabalho){
+							
+		$html.=				'<tr>
+								<td>'.$trabalho->titulo.'</td>';
+                                if ($trabalho->avaliacoes_atribuidas == 0 || !isset($trabalho->avaliacoes_concluidas)) {
+        $html.=                     '<td> 0 </td>';
+                                } else {
+        $html.=                     '<td>'.number_format(($trabalho->avaliacoes_concluidas/$trabalho->avaliacoes_atribuidas)*100,1) .'%</td>';
+                                }
+                                if (isset($trabalho->avaliacoes_concluidas)) {
+        $html.=					'<td>'.$trabalho->avaliacoes_concluidas.' de '.$trabalho->avaliacoes_atribuidas.'</td>';
+                                } else {
+        $html.=					'<td>0 de '.$trabalho->avaliacoes_atribuidas.'</td>';
+                                }
+        
+        $html.=					'<td>'.$trabalho->status.'</td>
+							</tr>';
+						}
+		$html.=		'</tbody>
+				</table>
+			</body>
+		</html>';
+
+		return $html;
+	}
+
+
 }

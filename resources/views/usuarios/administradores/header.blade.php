@@ -49,9 +49,8 @@ $nome_evento = Evento::ver_nome_evento();
 <body>
   <header>
     <div class="container-fluid">
-
-    </div>  
-    <nav class="navbar navbar-inverse">
+    
+    <nav class="navbar navbar-inverse ">
       <div class="navbar-header">
         @forelse($nome_evento as $nome)
         <a href="/administrador/analise/completa" class="navbar-brand">{{ $nome->nome_evento }}</a>
@@ -138,7 +137,9 @@ $nome_evento = Evento::ver_nome_evento();
          </div>
        </div>
      </nav>
-   </header>
+  </div>
+  
+  </header>
    
    <main>
     <div class="col-xs-12 col-sm-12 col-md-12">  

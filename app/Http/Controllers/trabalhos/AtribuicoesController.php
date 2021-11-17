@@ -9,6 +9,7 @@ use App\Model\Notas;
 use App\Model\Trabalho;
 use App\Model\User;
 use DB;
+use App\Http\Util\GerarPdfUtil;
 
 class AtribuicoesController extends Controller
 {
@@ -57,14 +58,60 @@ class AtribuicoesController extends Controller
 
   public function buscaTrabalhosAtribuirAvaliador()
   {
-
     
     $trabalhos = Trabalho::buscarTrabalhosParaAtribuicoes();
-
     return $trabalhos;
-
-
   }
+
+  public function exportarAtribuicoesAvaliadores() {
+		$trabalhos = Trabalho::buscarTrabalhosParaAtribuicoes();
+		
+		$html = $this->getHtmlAtribuicoesParaExportacao($trabalhos);
+
+		return GerarPdfUtil::gerarPdf($html);
+				
+	}
+
+	private function getHtmlAtribuicoesParaExportacao($trabalhos){
+
+		$html = "
+			<!DOCTYPE html>
+			<html>
+			<head>
+				<meta charset='utf-8'>
+				<style type='text/css'>";
+		$html.= GerarPdfUtil::getCssPdf();			
+		$html.=	"</style>
+			</head>
+			<body>";
+		
+		$html.= '<h4 class="text-center">Lista de atribuiçoes de avaliadores</h4>
+				<table  class="responsive-table" id="lista_trabalhos">
+					<thead>
+						<tr>
+							<th>Título</th>
+							<th>Área</th>
+							<th>Categoria</th>
+							<th>Nº de Avaliador(es)</th>
+						</tr>
+					</thead>
+					<tbody>';
+						foreach ($trabalhos as $trabalho){
+							
+		$html.=		'<tr>
+								<td>'.$trabalho->titulo.'</td>
+								<td>'.$trabalho->area.'</td>
+								<td>'.$trabalho->categoria .'</td>
+								<td>'.$trabalho->avaliacoes_atribuidas.'</td>
+							</tr>';
+						}
+		$html.=		'</tbody>
+				</table>
+			</body>
+		</html>';
+
+		return $html;
+	}
 
 
 }
