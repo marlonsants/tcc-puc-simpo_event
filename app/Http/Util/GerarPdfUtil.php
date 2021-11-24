@@ -89,8 +89,8 @@ class GerarPdfUtil {
 			height: 1px;
 			width: 1px;
 			overflow: hidden;
-			background-color: #7eccd4;
-			color: white;
+			color: black;
+			font-weight: bold;
 		  }
 		  @media (min-width: 48em) {
 			.responsive-table thead {
@@ -99,16 +99,15 @@ class GerarPdfUtil {
 			  height: auto;
 			  width: auto;
 			  overflow: auto;
-			  background-color: #7eccd4;
-    		  color: white;
+    		  color: black;
+			  font-weight: bold;
+
 			}
 		  }
 		  .responsive-table thead th {
-			background-color: #7eccd4;
-			border: 1px solid #2527308c;
-			font-weight: normal;
-			text-align: center;
-			color: white;
+			text-align: left;
+			color: black;
+			font-weight: bold;
 		  }
 		  .responsive-table thead th:first-of-type {
 			text-align: left;
@@ -200,8 +199,7 @@ class GerarPdfUtil {
 			}
 		  }
 		  .responsive-table tbody th[scope=row] {
-			background-color: #7eccd4;
-			color: white;
+			color: black;
 		  }
 		  @media (min-width: 30em) {
 			.responsive-table tbody th[scope=row] {

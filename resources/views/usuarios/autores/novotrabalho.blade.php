@@ -67,7 +67,7 @@ use App\Model\Evento;
 				<div class="col-xs-12 col-md-12 form-group">
 					<label>Título</label>
 					<output class="text-danger" name="qtm"></output>
-					<input required type="tex" name="titulo"  class="form-control" placeholder="Título do Artigo" value="{{ $trabalho->titulo or old('titulo')}}" style="text-align: left;">
+					<input required type="tex" name="titulo"  class="form-control" placeholder="Título do Trabalho" value="{{ $trabalho->titulo or old('titulo')}}" style="text-align: left;">
 					<output name="qt">0</output>
 				</div>
 			</div>
@@ -76,7 +76,7 @@ use App\Model\Evento;
 				<div class="col-xs-12 col-md-6 form-group">
 					<label>Resumo</label>
 					<output name="qrm" class="text-danger"></output>
-					<textarea required name="resumo" class="form-control"  placeholder="Resumo do Artigo" style="width: 100%; height: 20%;">{{ $trabalho->resumo or old('resumo')  }}</textarea>
+					<textarea required name="resumo" class="form-control"  placeholder="Resumo do Trabalho" style="width: 100%; height: 20%;">{{ $trabalho->resumo or old('resumo')  }}</textarea>
 					<output name="qr">0</output>
 				</div>
 
@@ -163,10 +163,10 @@ use App\Model\Evento;
 				      </div>
 				      <div class="modal-body">
 				      	<p>
-				      		O coautor informado não está cadastrado no sistema !!!!!
+				      		O autor informado não está cadastrado no sistema !!!!!
 				      	</p>
 				       <p>
-						Para ser coautor de um trabalho é necessário estar cadastrado no sistema, pois as informações para os anais do evento serão coletadas a partir do cadastro.
+						Para ser autor de um trabalho é necessário estar cadastrado no sistema, pois as informações para os anais do evento serão coletadas a partir do cadastro.
 						</p>
 						<p>
 						Agradecemos a compreessão qualquer dúvida favor entrar em contato através do e-mail 
@@ -186,9 +186,11 @@ use App\Model\Evento;
 
 			<div class="row">
 				<div class="col-md-12">
-					<label>Autores do trabalho</label> <button  type="button" data-toggle="modal" data-target="#ModalAutores" class="btn-sm btn-info glyphicon glyphicon-plus" tool></button>	
-					
-
+					<button  type="button" data-toggle="modal" data-target="#ModalAutores" class="btn-sm btn-info" tool>
+						Adicionar autores no trabalho <span class="glyphicon glyphicon-plus"></span>
+					</button>	
+					<br><br>
+					<label for="Autores">Autores do trabalho</label>
 					<table class="table">
 						<thead style="background-color: white; color: black; font-size: 14px "> 
 							<th>Nome</th><th>email</th><th>Ordem de autoria</th><th></th>

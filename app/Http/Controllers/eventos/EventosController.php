@@ -99,10 +99,10 @@ class EventosController extends Controller
 
 			session()->put('evento_nome', $dados['nome_evento']);
 			session()->flash('msg', 'Informações alteradas com sucesso');
-			return redirect('/administrador/editarEvento');
+			return redirect('/administrador/editarEvento/'.$evento_id);
 		}else{
 			session()->flash('erro', 'Erro ao alterar as informações do evento');
-			return redirect('/administrador/editarEvento');
+			return redirect('/administrador/editarEvento/'.$evento_id);
 		}
 	}
 

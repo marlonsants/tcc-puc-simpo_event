@@ -91,8 +91,10 @@ $nome_evento = Evento::ver_nome_evento();
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li role="separator" class="divider"></li>
-              <li><a href="/administrador/cadastrar">Administrador</a></li>
-              <li><a href="/administrador/eventos">Eventos</a></li>
+              @if(session()->get('acesso_id') == NIVEL_ACESSO_MASTER) 
+                <li><a href="/administrador/cadastrar">Administrador</a></li>
+                <li><a href="/administrador/eventos">Eventos</a></li>
+              @endif
               <li><a href="/administrador/cadastros_basicos/categorias">Categorias</a></li>
               <li><a href="/administrador/cadastros_basicos/areas">Áreas</a></li>
               <li><a href="/administrador/cadastros_basicos/criterios">Critérios de Avaliações</a></li>

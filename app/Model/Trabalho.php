@@ -188,11 +188,12 @@ class Trabalho extends Model
 
       $result = DB::select( 
                           DB::raw("select distinct p.id,p.nome,p.instituicao,a.nome as 'area',t.status_id as 'trabalho_status',t.id as 'trabalho_id' from atribuicoes_avaliacoes atr 
-                                  INNER JOIN avaliadores av ON atr.pessoa_id = av.pessoa_id
-                                  LEFT JOIN areas a ON a.id = av.area_id
-                                  INNER JOIN pessoas p ON p.id = av.pessoa_id
+                                  INNER JOIN pessoas p ON p.id = atr.pessoa_id
                                   INNER join trabalhos t ON t.id = atr.trabalho_id
-                                  where t.id = {$trabalho_id} 
+                                  LEFT JOIN areas a ON a.id = t.area_id
+                                  INNER JOIN eventos_acesso_id ea on ea.pessoa_id = p.id 
+                                  where t.id = {$trabalho_id}
+                                  and ea.acesso_id = 2 
                                   and p.id not in( ( select pessoa_id from autores where trabalho_id = {$trabalho_id} ) )
                                   ")
                         );  

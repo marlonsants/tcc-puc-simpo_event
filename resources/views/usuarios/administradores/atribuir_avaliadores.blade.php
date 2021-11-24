@@ -37,6 +37,7 @@ $maxTrabalhoAvaliador = Evento::maxTrabalhoAvaliador();
 	</table>
 
 </div>
+<br><br>
 <div class="col-md-3 col-xs-12">
 <table class="table table-bordered table-hover table-bordered table-stripped" id="Trabalhos_atribuidos">	
 	<thead><th>Nome</th><th>Trabalhos Atribuidos</th></thead>

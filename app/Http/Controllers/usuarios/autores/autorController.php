@@ -67,7 +67,7 @@ class AutorController extends Controller
         		$trabalho->notaFinal = $notaFinal;
 			}
         }
-		
+				
 		return view('usuarios/autores/meus_trabalhos',compact('trabalhos','arrayDatas','parecer','pre_avaliacoes','datasSubmissao','dataAtual','data_ini_ava') );
 	}
 

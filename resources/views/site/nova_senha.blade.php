@@ -18,9 +18,9 @@
 					<div class="row">
 						<div class="col-md-12">
 						{{csrf_field()}}
+							<input  required type="email" name="usuario" class="form-control margin-top-10" placeholder="E-mail">
 							<input  required type="password" name="senha" class="form-control margin-top-10" placeholder="Nova senha">
 							<input  required type="password" name="confirSenha" class="form-control margin-top-10" placeholder="Confirme a senha">
-							<input  required type="email" name="usuario" class="form-control margin-top-10" placeholder="E-mail">
 							<!--<input  required type="text" name="CPF" class="form-control margin-top-10" placeholder="Informe seu CPF">
 							<input  required type="text" name="rg" class="form-control margin-top-10" placeholder="Informe seu RG">-->
 							<select name="pergunta" id="pergunta" class="form-control margin-top-10" disabled >

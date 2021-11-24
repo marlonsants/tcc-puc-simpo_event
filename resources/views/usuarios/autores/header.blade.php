@@ -41,9 +41,9 @@ if($acesso[0]['acesso_id'] == 2){
       <nav class="navbar navbar-inverse">
         <div class="navbar-header">
           @if(!empty($nome_evento[0]) )
-          <a href="/autor/home" class="navbar-brand">{{ $nome_evento[0]->nome_evento }}</a>
+          <a href="/autor/trabalhos/listar" class="navbar-brand">{{ $nome_evento[0]->nome_evento }}</a>
           @else
-          <a href="/autor/home" class="navbar-brand">System4college</a>
+          <a href="/autor/trabalhos/listar" class="navbar-brand">System4college</a>
           @endif
           <button type="button" class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">Menu</button>
         </div>
@@ -97,7 +97,7 @@ if($acesso[0]['acesso_id'] == 2){
                     @endif
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="/autor/editarperfil/{{session()->get('id')}}" class="text-center">Editar Perfil</a></li>
+                      <li><a href="/autor/editarperfil/{{session()->get('id')}}" class="text-center">Perfil</a></li>
                       <li><a href="/definir_acesso" class="text-center" data-toggle="tooltip" data-placement="botom" title="clique para alterar o tipo de acesso">Tipo de acesso</a></li>
                       
                       <li role="separator" class="divider"></li>

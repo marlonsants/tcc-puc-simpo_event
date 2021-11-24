@@ -286,6 +286,23 @@
 								@endif		
 							</td>
 						</tr>
+
+						<script type="text/javascript">
+							modalEditPdf();
+
+							$("#btn-excluir{{$trabalho->id}}").click(function(){
+
+								$("#corpoConfirmacao").html('Tem certeza que deseja remover este Trabalho?');
+								btn = '<button onclick="excluirTrabalho{{$trabalho->id}}()" data-toggle="tooltip" data-placement="top" title="Excluir trabalho" id="btn-excluir{{$trabalho->id}}" type="button"  id="form_excluir" class="btn btn-sm btn-danger"  name="delete"><span class="glyphicon glyphicon-trash"></span> </button>';
+								$("#corpoConfirmacaoBotoes").html(btn);
+
+							});
+
+							function excluirTrabalho{{$trabalho->id}}(){
+								$("#form_excluir{{$trabalho->id}}").submit();
+							}
+
+						</script>
 							
 						@empty
 						<h3>Nenhum trabalho cadastrado até o momento</h3>
@@ -369,22 +386,7 @@
 		</div>
 	</div>	
 
-	<script type="text/javascript">
-		modalEditPdf();
-
-		$("#btn-excluir{{$trabalho->id}}").click(function(){
-
-			$("#corpoConfirmacao").html('Tem certeza que deseja remover este Trabalho?');
-			btn = '<button onclick="excluirTrabalho{{$trabalho->id}}()" data-toggle="tooltip" data-placement="top" title="Excluir trabalho" id="btn-excluir{{$trabalho->id}}" type="button"  id="form_excluir" class="btn btn-sm btn-danger"  name="delete"><span class="glyphicon glyphicon-trash"></span> </button>';
-			$("#corpoConfirmacaoBotoes").html(btn);
-
-		});
-
-		function excluirTrabalho{{$trabalho->id}}(){
-			$("#form_excluir{{$trabalho->id}}").submit();
-		}
-
-	</script>
+	
 
 	<style type="text/css">
 		.obs {color: white; background-color: #5F9EA0; padding: 10px; text-align: left;}

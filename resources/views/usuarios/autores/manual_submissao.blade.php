@@ -9,12 +9,14 @@
 			<ol>
 				<h4><li>Para submeter um artigo no evento selecionado, basta clicar na opção <b>Trabalho</b> e depois em <b>Criar Novo</b>, nesta opção você deve inserir os dados referentes ao artigo:</h4>
 					<ol>
-						<li><b>Titulo do Artigo -</b> Deve possuir entre 100 a 300 caracteres contando espaços, letras, numeros e pulos de linha.</li>
-						<li><b>Resumo do Artigo -</b> Deve possuir entre 1000 a 2500 caracteres contando espaços, letras, numeros e pulos de linha.</li>
+						<li><b>Titulo do Trabalho -</b> Deve possuir entre 100 a 300 caracteres contando espaços, letras, numeros e pulos de linha.</li>
+						<li><b>Resumo do Trabalho -</b> Deve possuir entre 1000 a 2500 caracteres contando espaços, letras, numeros e pulos de linha.</li>
 						<li><b>Area -</b> Aqui você seleciona em qual area o artigo se enquadra.</li>
 						<li><b>Categoria -</b> Se é um artigo de iniciação cientifica, resumo espandido ou artigo completo.</li>
-						<li><b>Coautores -</b> Aqui é informado quantos couatores o trabalho possui e caso possua um ou mais coautores informar surgirá os campos para informar CPF de cada um deles.<br>(Lembrando que os couautores precisam estar tambem cadastrados em nosso sitema para que o cadastro seja valido)</li>
-						<li><b>Botão Cadastrar -</b> Ao clicar nesse botão, caso todos os campos anteriores estejam preenchidos corretamente, o cadastro será concluido, mas o artigo em PDF deve ser enviado na tela 'Meus Artigos'.</li>
+						<li><b>Autores do trabalho -</b> Clicando no botão 
+							<button  type="button"  class="btn-sm btn-info">Adicionar autores no trabalho <span class="glyphicon glyphicon-plus"></span></button> 
+							é possível incluir autores no trabalho para incluir basta digitar o e-mail do autor e informar a ordem de autoria <strong>(Lembrando que os autores precisam estar cadastrados no sitema, para ser possível incluir no trabalho)</strong></li>
+						<li><b>Botão Cadastrar -</b> Ao clicar nesse botão, caso todos os campos anteriores estejam preenchidos corretamente, o cadastro será concluido, mas o artigo em PDF deve ser enviado na tela 'Meus Trabalhos'.</li>
 					</ol>
 				</li><br>
 
@@ -27,7 +29,7 @@
 								<li><b>Enviar Arquivo <button class="btn btn-info"><span class="glyphicon glyphicon-save-file"/></button> -</b> Neste botão você ira o arquivo em formato PDF com o artigo.</li><br>
 								<li><b>Excluir Trabalho <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"/></button> -</b> Irá excluir o trabalho selecionado.</li><br>
 								<li><b>Enviar Trabalhos Corrigidos <button class="btn btn-warning subPdf"><span class="glyphicon glyphicon-pencil"/></button> -</b> Este botão serve para enviar um novo arquivo com a correção do anterior caso seja solicitado pelos organizadores do evento.</li><br>
-								<li><b>Visualizar Artigo <button class="btn btn-success" ><span class="glyphicon glyphicon-eye-open"/></button> -</b> Permite visualizar o arquivo enviado e também baixar o mesmo.</li><br>
+								<li><b>Visualizar Trabalho <button class="btn btn-success" ><span class="glyphicon glyphicon-eye-open"/></button> -</b> Permite visualizar o arquivo enviado e também baixar o mesmo.</li><br>
 								<li><b>Parecer de Avaliação <button class="btn btn-primary"><span class="glyphicon glyphicon-plus"/></button> -</b> Permite visualizar o parecer do avaliador sobre o trabalho.</li><br>
 							</ul>
 						</li>
