@@ -29,7 +29,7 @@ class AdmEventosController extends Controller
 		$eventos = DB::table('eventos_acesso_id as ea')
 		->join('eventos as e', 'e.id', '=', 'ea.evento_id')
 		->where('ea.pessoa_id','=', session('id'))
-		->select('e.*')
+		->select('e.*')->distinct()
 		->get();
 
 		return $eventos;

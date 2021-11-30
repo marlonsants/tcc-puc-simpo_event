@@ -8,7 +8,7 @@
 			{!!csrf_field()!!}
 			<div class="row">
 				<div class="col-md-4 col-md-offset-3">
-					<input type="text" name="nome" placeholder="Nome" class="form-control">
+					<input type="text" name="nome" placeholder="Descrição" class="form-control">
 				</div>
 				<!-- <div class="col-md-1 ">
 					<input type="color" name="cor" placeholder="cor" class="form-control">

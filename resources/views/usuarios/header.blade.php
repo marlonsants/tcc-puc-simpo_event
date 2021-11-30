@@ -29,7 +29,7 @@
 		</div>  
 		<nav class="navbar navbar-inverse">
 			<div class="navbar-header">
-				<a href="/autor/home" class="navbar-brand">System4college</a>
+				<a href="/autor/home" class="navbar-brand">SimpoEvent</a>
 				<button type="button" class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">Menu</button>
 			</div>
 

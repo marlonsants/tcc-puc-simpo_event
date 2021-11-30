@@ -105,7 +105,7 @@
 @if($trabalho->status_avaliacao != 3)
 <div class="row">
 	<div class="col-md-2 col-md-offset-5 col-xs-12">
-		<button class="btn btn-success btn-sm col-md-12" data-toggle="modal" data-target="#confirmar">
+		<button class="btn btn-success col-md-12" data-toggle="modal" data-target="#confirmar">
 			<span class="glyphicon glyphicon-ok"></span> Confirmar avaliação
 		</button>
 	</div>

@@ -9,9 +9,10 @@
 	@if(Session::has('suc'))
 		<div class="alert alert-success text-center"><p><b>{{Session::get('suc')}}</b></p></div>
 	@endif
-
+<h3 class="text-center">Listagem de Trabalhos para avaliação</h3>
+<hr>
 <table class="table table-bordered table-responsive table-condensed table-bordered table-striped">
-	<caption class="text-center">Listagem de Trabalhos</caption>
+
 	<thead>
 		<tr class="text-center">
 			<th>Título</th>

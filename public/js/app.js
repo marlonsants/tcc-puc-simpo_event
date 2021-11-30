@@ -1,13 +1,18 @@
 
 
 $(document).ready(function(){
-    $('[data-toggle="popover"]').popover(); 
+	if ($('[data-toggle="popover"]') != undefined && $('[data-toggle="popover"]').length > 0) {
+		$('[data-toggle="popover"]').popover(); 
+	}
+    
 });
 
 
 // Tooltips
 $(function () {
-	$('[data-toggle="tooltip"]').tooltip()
+	if ($('[data-toggle="tooltip"]') != undefined && $('[data-toggle="tooltip"]').length > 0) {
+		$('[data-toggle="tooltip"]').tooltip()
+	}
 })
 
 // Dropdowns

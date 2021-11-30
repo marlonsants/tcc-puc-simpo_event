@@ -23,8 +23,10 @@
 				</div>
 			@endif
 			<div class="col-xs-12 col-md-12">
+				<h3 class="text-center">Listagem de Trabalhos</h3>
+				<a href="/autor/trabalhos/novo" class="btn btn-primary">Cria novo trabalho <span class="glyphicon glyphicon-plus"></span></a>
 				<table class="table table-bordered table-responsive table-condensed  table-bordered table-stripped">
-					<h3 class="text-center">Listagem de Trabalhos</h3>
+					
 					<hr>
 					<thead>
 						<tr>
@@ -94,7 +96,7 @@
 											</div>
 										</form>
 
-										<a href="editar/{{$trabalho->id}}" type="button"  data-toggle="tooltip" data-placement="top" title="Editar as informações do trabalho" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil EditarTrabalho"></span></button>
+										<a href="editar/{{$trabalho->id}}" type="button"  data-toggle="tooltip" data-placement="top" title="Editar as informações do trabalho" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil EditarTrabalho"></span></a>
 
 									@endif
 									<!-- se o Pdf já foi enviado 	 -->
@@ -122,7 +124,7 @@
 											</div>
 										</form>	
 
-										<a href="editar/{{$trabalho->id}}" type="button"  data-toggle="tooltip" data-placement="top" title="Editar as informações do trabalho" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil EditarTrabalho"></span></button>
+										<a href="editar/{{$trabalho->id}}" type="button"  data-toggle="tooltip" data-placement="top" title="Editar as informações do trabalho" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil EditarTrabalho"></span></a>
 										
 									@endif
 								@endif
@@ -131,10 +133,6 @@
 								<!-- Este bloco controla o que deve ser exibido no campo ações durante a avaliação de trabalhos  -->
 								@if($arrayDatas['dataAtual'] >= $arrayDatas['data_ini_ava'] and $arrayDatas['dataAtual'] <= $arrayDatas['data_fim_ava'] )
 									<!-- se o pdf não foi enviado bloqueia todas as ações -->
-									@if($trabalho->status_id == 4)
-										<p class="text-danger">PDF não enviado no prazo </p>
-									@endif
-
 									<!-- se o trabalho estiver aprovado, avaliado aguardando aprovação ,em avaliação ou aguardando avaliação -->
 									@if($trabalho->status_id == 1 or $trabalho->status_id == 2 or  $trabalho->status_id == 3 or $trabalho->status_id == 5 or  $trabalho->status_id == 6)
 										<!-- botão visualizar trabalho  -->

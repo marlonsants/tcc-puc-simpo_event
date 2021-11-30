@@ -170,7 +170,7 @@ use App\Model\Evento;
 						</p>
 						<p>
 						Agradecemos a compreessão qualquer dúvida favor entrar em contato através do e-mail 
-						<strong>system4college@gmail.com</strong>
+						<strong>SimpoEvent@gmail.com</strong>
 						</p>	
 				      </div>
 				      <div class="modal-footer">

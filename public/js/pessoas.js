@@ -34,18 +34,17 @@ $(document).ready(function(){
 function verificaCPFCadastrado(){	
 	$(document).on('blur','#numero_doc',function(){
 		var numero_doc = $(this).val();
-		console.log("Verificando numero_doc...");
-
-		$.get('/verifica/numero_doc/'+numero_doc, function(resultado){
-			if(resultado[0] !== undefined ){			
-				$('#numero_doc').val("");				
-				$('#numero_doc').attr('placeholder',"Já cadastrado!");
-				$('#numero_doc').css("border-color","red");
-			}else  if(resultado[0] === undefined){
-				$('#numero_doc').css("border-color","#ccc");
-				console.log("Este numero de documento ainda não foi cadastrado");
-			}
-		});
+		if (numero_doc != undefined && numero_doc != "" ) {
+			$.get('/verifica/numero_doc/'+numero_doc, function(resultado){
+				if(resultado[0] !== undefined ){			
+					$('#numero_doc').val("");				
+					$('#numero_doc').attr('placeholder',"Já cadastrado!");
+					$('#numero_doc').css("border-color","red");
+				}else  if(resultado[0] === undefined){
+					$('#numero_doc').css("border-color","#ccc");
+				}
+			});
+		}
 	});
 }
 

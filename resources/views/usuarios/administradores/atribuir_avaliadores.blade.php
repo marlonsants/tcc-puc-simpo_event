@@ -2,6 +2,15 @@
 <?php 
 use App\Model\Evento;
 $maxTrabalhoAvaliador = Evento::maxTrabalhoAvaliador();
+$maxAvaliadorPorTrabalho = Evento::maxAvaliadorPorTrabalho();
+
+if (isset($maxTrabalhoAvaliador) && count($maxTrabalhoAvaliador) > 0) {
+	$maxTrabalhoAvaliador = $maxTrabalhoAvaliador[0]->num_trab_avaliador;
+}
+
+if (isset($maxAvaliadorPorTrabalho) && count($maxAvaliadorPorTrabalho) > 0) {
+	$maxAvaliadorPorTrabalho = $maxAvaliadorPorTrabalho[0]->max_avaliadores_trabalhos;
+}
 	
  ?>
 @push('scripts')
@@ -13,11 +22,11 @@ $maxTrabalhoAvaliador = Evento::maxTrabalhoAvaliador();
 	<h4 class="text-center">Atribuir avaliadores</h4><hr>
 </div>
 <div class="col-md-9 col-xs-12 col-lg-9" style="overflow: auto">
-	<div class="col-md-8">
+	<div class="col-md-8 col-xs-12">
 		<h4 class="pull-right">Trabalhos para atribuição de avaliadores</h4>
 	</div>
-	<div class="col-md-4">
-		<a target="_blank" class="btn btn-success pull-right" href="/administrador/exportar/atribuicoesAvaliadores">
+	<div class="col-md-4 col-xs-12">
+		<a target="_blank" class="btn btn-success btn-block pull-right" href="/administrador/exportar/atribuicoesAvaliadores">
 					Exportar em PDF <span class="glyphicon glyphicon-open-file"></span>
 		</a>	
 	</div>
@@ -122,7 +131,7 @@ $maxTrabalhoAvaliador = Evento::maxTrabalhoAvaliador();
 				<div class="row">
 					<div class="col-xs-12"><center>
 						<h3><b class="text text-danger">Atenção</b></h3> 
-						<h4>Esta ação irá remover a permissão para que o avaliador prossiga com as correções deste artigo.</h4>
+						<h4>Esta ação irá remover a permissão para que o avaliador prossiga com a avaliação deste trabalho.</h4>
 						<h4> Deseja continuar ?</h4></center>
 					</div>
 				</div>
@@ -195,7 +204,7 @@ CarregarAtribuicoesDoAvaliador();
 
 	function montaTabelaAvaliadores(avaliadores){
 		if(typeof avaliadores[0] !== 'undefined'){
-
+			
 			$("#body_avaliadores_modal").html(' ');
 			if($.inArray(3, avaliadores[0].trabalho_status) >= 0 || $.inArray(2, avaliadores[0].trabalho_status)  >= 0){
 				$("#body_avaliadores_modal").prepend("<div class='alert alert-danger'>Atenção, já foram iniciadas as avaliações para este trabalho</div>");
@@ -426,6 +435,7 @@ CarregarAtribuicoesDoAvaliador();
 		totalDeAtribuicao = parseInt(totalDeAtribuicao);
 		totalAtribuido = $('#select_avaliador option:selected').attr('qtdAtribAvaliador');
 		maxTrabAvaliadorPermitido = '<?= $maxTrabalhoAvaliador; ?>';
+		maxAvaliadorPorTrabalho = '<?= $maxAvaliadorPorTrabalho; ?>';
 		console.log('total atribuido '+totalAtribuido);
 
 		if(totalAtribuido >= maxTrabAvaliadorPermitido){
@@ -436,6 +446,18 @@ CarregarAtribuicoesDoAvaliador();
 			html += '<h4>Este autor já possui '+totalAtribuido+' trabalho(s) atribuido(s), portanto já ultrapassou a quantidade máxima de '+maxTrabAvaliadorPermitido+' trabalho(s) definida para este evento.</h4>';
 			$("#msg_alerta").html('');
 			$("#msg_alerta").append(html);
+			return;
+		}	
+
+		if(totalDeAtribuicao >= maxAvaliadorPorTrabalho){
+			
+			var html = '';
+			$("#modal_alerta").modal('show');
+			html += '<h3><b class="text text-danger">Atenção</b></h3>';
+			html += '<h4>Este trabalho já possui '+totalDeAtribuicao+' avaliador(es) atribuido(s), portanto já ultrapassou a quantidade máxima de '+maxAvaliadorPorTrabalho+' avaliadores por trabalho definida para este evento.</h4>';
+			$("#msg_alerta").html('');
+			$("#msg_alerta").append(html);
+			return;
 		}	
 						
 		

@@ -28,7 +28,7 @@ $nome_evento = Evento::ver_nome_evento();
   <meta name="viewport" content="width=device-width, initial-scale=1">
  
 
-  <title>System4college - Administrador</title>
+  <title>SimpoEvent - Administrador</title>
 
   <!-- Fonts -->
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
@@ -53,9 +53,9 @@ $nome_evento = Evento::ver_nome_evento();
     <nav class="navbar navbar-inverse ">
       <div class="navbar-header">
         @forelse($nome_evento as $nome)
-        <a href="/administrador/analise/completa" class="navbar-brand">{{ $nome->nome_evento }}</a>
+        <a href="/administrador/analise/completa" class="navbar-brand">Evento: {{ $nome->nome_evento }}</a>
         @empty
-        <a href="/administrador/analise/completa" class="navbar-brand">System4college</a>
+        <a href="/administrador/analise/completa" class="navbar-brand">SimpoEvent</a>
         @endforelse
         <button type="button" class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">Menu</button>
       </div>
@@ -72,7 +72,7 @@ $nome_evento = Evento::ver_nome_evento();
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Avaliadores <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li role="separator" class="divider"></li>
-              <li><a href="/administrador/avaliadores/listar">Avaliadores</a></li>
+              <li><a href="/administrador/avaliadores/listar">Listar avaliadores</a></li>
               <li><a href="/administrador/avaliadores/atribuir">Atribuir Avaliadores</a></li>
               <li><a href="/administrador/avaliadores/progresso">Progresso de avaliações</a></li>
               <li role="separator" class="divider"></li>

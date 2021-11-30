@@ -10,7 +10,7 @@ $nome_evento = Evento::ver_nome_evento();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>System4college - Avaliador</title>
+  <title>SimpoEvent - Avaliador</title>
 
   <!-- Fonts -->
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
@@ -34,7 +34,7 @@ $nome_evento = Evento::ver_nome_evento();
          @if(!empty($nome_evento[0]) )
           <a href="/autor/home" class="navbar-brand">{{ $nome_evento[0]->nome_evento }}</a>
           @else
-          <a href="/autor/home" class="navbar-brand">System4college</a>
+          <a href="/autor/home" class="navbar-brand">SimpoEvent</a>
           @endif
           <button type="button" class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">Menu</button>
       </div>

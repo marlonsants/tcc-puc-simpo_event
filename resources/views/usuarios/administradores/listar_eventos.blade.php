@@ -3,6 +3,12 @@
 @section("conteudo")
 <div class="row">
 	<h3 class="text-center text-info">Eventos</h3><hr>
+	@if(Session::has('msg'))
+	<div class="alert alert-success text-center"><p><b>{{Session::get('msg')}}</b></p></div>
+	@endif	
+	@if(Session::has('erro'))
+	<div class="alert alert-success text-center"><p><b>{{Session::get('erro')}}</b></p></div>
+	@endif	
 </div>
 <div class="row">
     <div class="col-md-2 col-md-offset-2 col-xs-12">

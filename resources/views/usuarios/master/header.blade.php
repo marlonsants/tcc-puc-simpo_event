@@ -32,7 +32,7 @@ $nome_evento = Evento::ver_nome_evento();
                 @forelse($nome_evento as $nome)
                 <a href="/master/home" class="navbar-brand">{{ $nome->nome_evento }}</a>
                 @empty
-                <a href="/master/home" class="navbar-brand">System4college</a>
+                <a href="/master/home" class="navbar-brand">SimpoEvent</a>
                 @endforelse
                 <button type="button" class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">Menu</button>
             </div>

@@ -45,11 +45,10 @@ class TrabalhosController extends Controller
 		$this->trabalho = $trabalho;
 	}
 	
-	
-
 	public function buscaTrabalhos(){
 		$evento = new Evento();
 		$datas = $evento->datasConf();
+		
 		$dataAtual = $datas['dataAtual'];
 		$data_ini_ava = $datas['data_ini_ava'];
 
@@ -64,15 +63,20 @@ class TrabalhosController extends Controller
 		foreach ($trabalhos as $key => $trabalho) {
 			// busca a quantidade de avalidores do trabalho
 			$qttdAvaliacoes = Atribuicoes_avaliacoes::qtddDeAvaliacoesDoTrabalho($trabalho->id);
+			
 			if($qttdAvaliacoes < 1){
 				$trabalho->notaFinal = 0;
 			}else{
 				$notaFinal = Notas::notaFinal($trabalho->id);
-        		$notaFinal = $notaFinal[0]->notaFinal/$qttdAvaliacoes;
-        		$trabalho->notaFinal = $notaFinal;
+				if ($notaFinal != null && count($notaFinal) > 0) {
+					$notaFinal = $notaFinal[0]->notaFinal/$qttdAvaliacoes;
+					$trabalho->notaFinal = $notaFinal;
+				} else {
+					$trabalho->notaFinal = 0;
+				}
 			}
         }
-
+		
 		return $trabalhos;
 	}
 
@@ -113,7 +117,6 @@ class TrabalhosController extends Controller
 			
 		}
 	}
-
 	
 	public function visualizarTrabalho($trabalho_id){
 
@@ -146,8 +149,6 @@ class TrabalhosController extends Controller
 			return response::json('erro ao buscar autores');
 		}
 	}
-
-
 
 	public function buscaResumo($trabalho_id){
 		$trabalhoInfo =  (object) array();
@@ -190,7 +191,6 @@ class TrabalhosController extends Controller
 
 		
 	}
-
 
 	public function aprovarTrabalho($trabalho_id){
 		// atribui 1 para aprovar o trabalho
@@ -252,31 +252,31 @@ class TrabalhosController extends Controller
 
 		try
 		{
-			foreach ($autoresDoRequest['autores'] as $indice => $autorRequest) {
-				
-				// se o autor ainda não está cadastro faz o insert se já estiver cadastrado faz o update
-				if (isset($autorRequest['id'])  ){
-					if (!in_array_field($autorRequest['id'], 'id', $autores) ){
-						$autoresArray = array('trabalho_id' => $trabalho_id , 'pessoa_id' => $autorRequest['id'], 'ordemDeAutoria' => $autorRequest['ordem'],'evento_id' => $evento_id);
-						$insertautores = Autores::create($autoresArray);
-					}else{
-						$autor = Autores::find($autorRequest['autor_id']);
-											
-						$autor->update(['ordemDeAutoria' => $autorRequest['ordem'] ]);
-					}
-				}	 
-			}
+			if (isset($autoresDoRequest['autores']) )  {
+			
+				foreach ($autoresDoRequest['autores'] as $indice => $autorRequest) {
+					// se o autor ainda não está cadastro faz o insert se já estiver cadastrado faz o update
+					if (isset($autorRequest['id'])  ){
+						if (!in_array_field($autorRequest['id'], 'id', $autores) ){
+							$autoresArray = array('trabalho_id' => $trabalho_id , 'pessoa_id' => $autorRequest['id'], 'ordemDeAutoria' => $autorRequest['ordem'],'evento_id' => $evento_id);
+							$insertautores = Autores::create($autoresArray);
+						}else{
+							$autor = Autores::find($autorRequest['autor_id']);
+												
+							$autor->update(['ordemDeAutoria' => $autorRequest['ordem'] ]);
+						}
+					}	 
+				}
 
-			foreach ($autoresDoRequest['autores'] as $indice => $autor) {
-								
-				// se o id do autor não esta nos dados de requisição ele deve ser excluido
-				if ( !isset($autor['id'])  ){
-					// echo "o autor {$autor['autor_id']} não está no request do form, por isso será excluído <br>";
-					$autor = Autores::find($autor['autor_id']);
-					$autor->delete();
+				foreach ($autoresDoRequest['autores'] as $indice => $autor) {
+					// se o id do autor não esta nos dados de requisição ele deve ser excluido
+					if ( !isset($autor['id'])  ){
+						// echo "o autor {$autor['autor_id']} não está no request do form, por isso será excluído <br>";
+						$autor = Autores::find($autor['autor_id']);
+						$autor->delete();
+					}
 				}
 			}
-
 			session()->flash('msg', 'Informações alteradas com sucesso');
 			return redirect('autor/trabalhos/editar/'.$trabalho_id);
 

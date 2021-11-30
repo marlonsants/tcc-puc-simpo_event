@@ -227,6 +227,8 @@ function modalAvaliarTrabalho(){
 	$(document).on('click','#NotasCriterios', function(){
 		var trabalho_id = $(this).attr('trabalho_id');
 		$('#notas_criterios').html(' ');
+		$('.modal-title').html('');
+		$('.modal-title').append('Notas dos critérios de avaliação');
 		
 		$.get('/administrador/criterios/notas/'+trabalho_id, function(avaliacoes){
 			var linha = '';

@@ -57,7 +57,7 @@ class EventosController extends Controller
 
 			
 		}else{
-			$message = 'Ocorreu um erro ao enviar o arquivo, verifique a integridade do arquivo e tente novamente, caso aconteça novamente entre em contato com a equipe de suporte atraves do email: system4college@gmail.com';
+			$message = 'Ocorreu um erro ao enviar o arquivo, verifique a integridade do arquivo e tente novamente, caso aconteça novamente entre em contato com a equipe de suporte atraves do email: SimpoEvent@gmail.com';
 		}	
 	}
 
@@ -99,10 +99,10 @@ class EventosController extends Controller
 
 			session()->put('evento_nome', $dados['nome_evento']);
 			session()->flash('msg', 'Informações alteradas com sucesso');
-			return redirect('/administrador/editarEvento/'.$evento_id);
+			return redirect('/administrador/eventos');
 		}else{
 			session()->flash('erro', 'Erro ao alterar as informações do evento');
-			return redirect('/administrador/editarEvento/'.$evento_id);
+			return redirect('/administrador/eventos');
 		}
 	}
 
@@ -141,7 +141,8 @@ class EventosController extends Controller
 				return redirect('/administrador/editarEvento');
 			}
 
-			return	redirect('/eventos');	//redireciona o administrador pra a tela de escolha do evento
+			session()->flash('msg', "Evento cadastrado com sucesso!");
+			return	redirect('/administrador/eventos');	//redireciona o administrador pra a tela de escolha do evento
 		}else{
 			echo"ERRO AO SALVAR";
 		}

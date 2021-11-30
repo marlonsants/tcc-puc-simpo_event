@@ -6,9 +6,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>System4College</title>
-
+	<title>SimpoEvent</title>
+	<link rel="shortcut icon" type="imagex/png"  href="/public/images/icon.ico">
 	<!-- Fonts -->
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css">
@@ -35,7 +34,7 @@
 	<header>
 		<nav class="navbar navbar-inverse">
 			<div class="navbar-header">
-				<a href="/" class="navbar-brand">System4College</a>
+				<a href="/" class="navbar-brand">SimpoEvent</a>
 				<button type="button" class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">Menu</button>
 			</div>
 			<div class="collapse navbar-collapse" id="menu">

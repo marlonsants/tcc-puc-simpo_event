@@ -23,7 +23,7 @@
 			<h4><span class="glyphicon glyphicon-user letra-amarelo col-xs-offset-1 col-md-offset-3 caixa-icone"> </span></h4> 
 			</div>		
 			<div class="col-xs-10 col-md-10 caixa-grafico text-center letra-amarelo">
-				<h4>Total de Avaliadores Cadastrados</h4>
+				<h4>Total de Avaliadores aprovados</h4>
 				<hr>
 				<h3>{{ $qtdAvaliadores or 0 }}</h3>
 			</div>		

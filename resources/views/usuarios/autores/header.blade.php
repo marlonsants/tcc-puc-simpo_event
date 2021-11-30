@@ -18,7 +18,7 @@ if($acesso[0]['acesso_id'] == 2){
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>System4college - Autor</title>
+  <title>SimpoEvent - Autor</title>
 
   <!-- Fonts -->
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
@@ -43,7 +43,7 @@ if($acesso[0]['acesso_id'] == 2){
           @if(!empty($nome_evento[0]) )
           <a href="/autor/trabalhos/listar" class="navbar-brand">{{ $nome_evento[0]->nome_evento }}</a>
           @else
-          <a href="/autor/trabalhos/listar" class="navbar-brand">System4college</a>
+          <a href="/autor/trabalhos/listar" class="navbar-brand">SimpoEvent</a>
           @endif
           <button type="button" class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">Menu</button>
         </div>
